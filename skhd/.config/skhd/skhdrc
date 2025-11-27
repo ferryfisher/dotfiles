@@ -1,0 +1,55 @@
+# Window navigation
+ctrl + cmd - h : yabai -m window --focus west 
+ctrl + cmd - j : yabai -m window --focus south
+ctrl + cmd - k : yabai -m window --focus north
+ctrl + cmd - l : yabai -m window --focus east
+
+# Window movement
+shift + alt - h : yabai -m window --warp west
+shift + alt - j : yabai -m window --warp south
+shift + alt - k : yabai -m window --warp north
+shift + alt - l : yabai -m window --warp east 
+
+shift + ctrl - h : yabai -m window --swap west
+shift + ctrl - j : yabai -m window --swap south
+shift + ctrl - k : yabai -m window --swap north
+shift + ctrl - l : yabai -m window --swap east 
+
+# Window resizing
+ctrl + alt - h : yabai -m window --resize left:-50:0; \
+                 yabai -m window --resize right:-50:0
+ctrl + alt - j : yabai -m window --resize bottom:0:50; \
+                 yabai -m window --resize top:0:50
+ctrl + alt - k : yabai -m window --resize top:0:-50; \
+                 yabai -m window --resize bottom:0:-50
+ctrl + alt - l : yabai -m window --resize right:50:0; \
+                 yabai -m window --resize left:50:0
+
+ctrl + alt - e : yabai -m space --balance
+
+# Window split
+alt - e : yabai -m window --toggle split
+
+# Rotate layout clockwise
+shift + ctrl - r : yabai -m space --rotate 270
+
+# Flip space along the Y-axis
+shift + ctrl - y : yabai -m space --mirror y-axis
+
+# Flip space along the X-axis
+shift + ctrl - x : yabai -m space --mirror x-axis
+
+# Toggle gaps
+ctrl + alt - g : yabai -m space --toggle padding; \
+yabai -m space --toggle gap
+
+# Toggle float
+shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2; \
+yabai -m window --toggle border
+
+# Fullscreen selected window
+shift + alt - f : yabai -m window --toggle native-fullscreen
+alt - f         : yabai -m window --toggle zoom-fullscreen
+
+# Disable native shortcuts
+cmd - h :

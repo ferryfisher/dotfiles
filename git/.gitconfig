@@ -1,0 +1,36 @@
+[branch]
+    sort = -committerdate
+[color]
+    ui = auto
+[commit]
+    gpgsign = true
+[core]
+    autocrlf = input
+    excludesFile = ~/.gitignore_global
+[diff]
+    algorithm = histogram
+    colorMoved = default
+    tool = nvimdiff
+    wsErrorHighlight = all
+[fetch]
+    prune = true
+    pruneTags = true
+[github]
+    user = ferryfisher
+[init]
+    defaultBranch = main
+[log]
+    date = iso
+[merge]
+    conflictStyle = zdiff3
+[pull]
+    ff = only
+[push]
+    default = simple
+[rebase]
+    autoSquash = true
+    autoStash = true
+[user]
+    name =  Ferry
+    email = 217118383+ferryfisher@users.noreply.github.com
+    signingkey = 99E289A14A9C264C
