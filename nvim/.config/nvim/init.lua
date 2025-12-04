@@ -6,8 +6,9 @@ vim.loader.enable()
 g.mapleader = " "
 g.maplocalleader = " "
 
+g.netrw_bufsettings = "nu noma nomod nowrap ro nobl"
 g.netrw_banner = 0
-g.netrw_browse_split = 0
+g.netrw_browse_split = 4
 g.netrw_keepdir = 0
 g.netrw_winsize = 20
 
