@@ -30,6 +30,14 @@
 [rebase]
     autoSquash = true
     autoStash = true
+[tag]
+    gpgSign = true
+[url "git@codeberg.org:"]
+    pushInsteadOf = https://codeberg.org/
+[url "git@github.com:"]
+    pushInsteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    pushInsteadOf = https://gitlab.com/
 [user]
     name =  Ferry
     email = 217118383+ferryfisher@users.noreply.github.com
