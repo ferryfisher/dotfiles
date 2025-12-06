@@ -4,13 +4,17 @@
     ui = auto
 [commit]
     gpgSign = true
+    verbose = true
 [core]
     autocrlf = input
     excludesFile = ~/.gitignore_global
+    safecrlf = true
 [diff]
     algorithm = histogram
-    colorMoved = default
+    colorMoved = zebra
+    renames = true
     tool = nvimdiff
+    wordDiff = true
     wsErrorHighlight = all
 [fetch]
     prune = true
@@ -25,11 +29,11 @@
     conflictStyle = zdiff3
 [pull]
     ff = only
-[push]
-    default = simple
 [rebase]
     autoSquash = true
     autoStash = true
+[status]
+    submoduleSummary = true
 [tag]
     gpgSign = true
 [url "git@codeberg.org:"]
