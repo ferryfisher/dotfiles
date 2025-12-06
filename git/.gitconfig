@@ -3,7 +3,7 @@
 [color]
     ui = auto
 [commit]
-    gpgsign = true
+    gpgSign = true
 [core]
     autocrlf = input
     excludesFile = ~/.gitignore_global
@@ -33,4 +33,4 @@
 [user]
     name =  Ferry
     email = 217118383+ferryfisher@users.noreply.github.com
-    signingkey = 99E289A14A9C264C
+    signingKey = 99E289A14A9C264C
