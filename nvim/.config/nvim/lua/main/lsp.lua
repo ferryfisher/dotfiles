@@ -37,13 +37,14 @@ autocmd("LspAttach", {
             callback = function()
                 local info = vim.fn.complete_info({ "selected" })
                 local bufnr = info.preview_bufnr
-                local winid = info.preview_winid
 
                 if bufnr and vim.bo[bufnr].filetype == "" then
                     vim.bo[bufnr].filetype = "markdown"
-                    vim.wo[winid].conceallevel = 2
-                    vim.wo[winid].concealcursor = "niv"
-                    vim.wo[winid].wrap = true
+
+                    local win = vim.wo[info.preview_winid]
+                    win.conceallevel = 2
+                    win.concealcursor = "niv"
+                    win.wrap = true
                 end
             end
         })
