@@ -50,19 +50,29 @@ return {
             desc = "FzfLua oldfiles"
         },
         {
+            "<leader>fq",
+            "<cmd>FzfLua quickfix<cr>",
+            desc = "FzfLua quickfix list"
+        },
+        {
+            "<leader>fQ",
+            "<cmd>FzfLua lgrep_quickfix<cr>",
+            desc = "FzfLua search quickfix list"
+        },
+        {
             "<leader>gc",
             "<cmd>FzfLua git_commits<cr>",
-            desc = "FzfLua git_commits"
+            desc = "git_commits FzfLua"
         },
         {
             "<leader>gs",
             "<cmd>FzfLua git_status<cr>",
-            desc = "FzfLua git_status"
+            desc = "git_status FzfLua"
         },
         {
             "<leader>gf",
             "<cmd>FzfLua git_files<cr>",
-            desc = "FzfLua git_files"
+            desc = "git_files FzfLua"
         },
     },
 
