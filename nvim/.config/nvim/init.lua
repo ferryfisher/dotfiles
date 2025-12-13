@@ -3,6 +3,8 @@ local g = vim.g
 
 vim.loader.enable()
 
+g.editorconfig = false
+
 g.mapleader = " "
 g.maplocalleader = " "
 
