@@ -33,7 +33,6 @@ return {
                 return { fg = color, bg = c(color):blend(ui.bg, 0.95):to_hex() }
             end
 
-            -- add `blend = vim.o.pumblend` to enable transparency
             return {
                 ColorColumn                = { link = "CursorLine" },
                 CursorLine                 = { bg = ui.bg_p1 },

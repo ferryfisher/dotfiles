@@ -45,7 +45,6 @@ o.completeitemalign = "kind,abbr,menu"
 o.completeopt = "menu,menuone,preview,noinsert,nosort,fuzzy,popup"
 
 o.shortmess = "acCoOstTF"
-o.pumblend = 10
 o.pumheight = 15
 o.pummaxwidth = 30
 o.scrolloff = 3
