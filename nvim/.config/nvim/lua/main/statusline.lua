@@ -151,8 +151,7 @@ local function default()
         "%{&encoding=='utf-8'?'U':''}",
         "%{&fileformat=='dos'?'\\\\':&fileformat=='mac'?'/':':'}",
         "%{&readonly?(&modified?'%*':'%%'):(&modified?'**':'--')}-",
-        '  T%{tabpagenr()} ',
-        '%#statusline#%< %{expand("%:h:t")}/%t', -- file name
+        '  T%{tabpagenr()} %#Title#%{expand("%:h:t")}/%t',
         stl_progress(),
         stl_lsp(),
         stl_gitinfo(),
@@ -172,7 +171,12 @@ local function default()
             elseif type(item.stl) == "string" then
                 pieces[#pieces + 1] = stl_format(item.name, item.stl)
             else
-                pieces[#pieces + 1] = item.default and stl_format(item.name, item.default) or ""
+                pieces[#pieces + 1] =
+                    item.default
+                    and item.name
+                    and stl_format(item.name, item.default)
+                    or ""
+
                 for _, event in next, item.event do
                     e[event] = e[event] or {}
                     e[event][#e[event] + 1] = key
