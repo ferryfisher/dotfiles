@@ -62,6 +62,7 @@ vim.lsp.enable({
 
 vim.diagnostic.config({
     severity_sort = true,
+    update_in_insert = true,
     virtual_text = { current_line = true },
     signs = {
         text = { "●", "●", "●", "●" },
