@@ -32,6 +32,9 @@
 [rebase]
     autoSquash = true
     autoStash = true
+[rerere]
+    autoUpdate = true
+    enabled = true
 [status]
     submoduleSummary = true
 [tag]
