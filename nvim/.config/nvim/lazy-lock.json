@@ -6,7 +6,6 @@
   "kanagawa.nvim": { "branch": "master", "commit": "aef7f5cec0a40dbe7f3304214850c472e2264b10" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
-  "replua.nvim": { "branch": "main", "commit": "8ed56f58aaec2d22e61907c46fbbc2a1d15b2ffd" },
   "visual-whitespace.nvim": { "branch": "main", "commit": "2eefcbcbe294ea6610868755db7ddb8f92f68a1c" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
