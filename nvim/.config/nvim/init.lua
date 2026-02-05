@@ -40,7 +40,7 @@ require("lazy").setup("plugins", {
 
         rtp = {
             disabled_plugins = {
-                "tohtml",
+                "editorconfig",
                 "getscript",
                 "getscriptPlugin",
                 "gzip",
@@ -49,6 +49,7 @@ require("lazy").setup("plugins", {
                 "matchit",
                 "rrhelper",
                 "tarPlugin",
+                "tohtml",
                 "tutor",
                 "zipPlugin",
             }
