@@ -8,11 +8,6 @@ g.editorconfig = false
 g.mapleader = " "
 g.maplocalleader = " "
 
-g.netrw_bufsettings = "nu noma nomod nowrap ro nobl"
-g.netrw_banner = 0
-g.netrw_keepdir = 0
-g.netrw_winsize = 20
-
 require("main")
 
 local stdpath = fn.stdpath
@@ -49,6 +44,8 @@ require("lazy").setup("plugins", {
                 "getscript",
                 "getscriptPlugin",
                 "gzip",
+                "netrw",
+                "netrwPlugin",
                 "matchit",
                 "rrhelper",
                 "tarPlugin",
