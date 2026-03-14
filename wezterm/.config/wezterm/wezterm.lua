@@ -10,7 +10,7 @@ local config = {
     color_scheme = "Kanagawa (Gogh)",
     font = wezterm.font("JetBrains Mono"),
     window_close_confirmation = "NeverPrompt",
-    window_decorations = "MACOS_FORCE_SQUARE_CORNERS|RESIZE",
+    window_decorations = "RESIZE",
 
     -- Tab bar
     tab_max_width = 30,
