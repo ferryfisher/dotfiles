@@ -1,9 +1,8 @@
 local PaperWM = hs.loadSpoon("PaperWM")
+local filter = hs.window.filter
 local modal = hs.hotkey.modal.new({ "alt" }, "space")
 
 local actions = PaperWM.actions.actions()
-
-PaperWM.window_gap = 5
 
 local hotkeys = {
     { {},                  "h",      nil,                        actions.focus_left },
@@ -51,5 +50,12 @@ local hotkeys = {
 for _, hotkey in next, hotkeys do
     modal:bind(table.unpack(hotkey))
 end
+
+filter.copy(PaperWM.window_filter):subscribe(
+    filter.windowCreated,
+    actions.full_width
+)
+
+PaperWM.window_gap = 5
 
 PaperWM:start()
