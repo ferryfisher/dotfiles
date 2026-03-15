@@ -57,6 +57,7 @@ o.ruler = false
 o.colorcolumn = "80"
 o.signcolumn = "yes"
 o.winborder = "bold"
+o.textwidth = 80
 o.cursorline = true
 o.lazyredraw = true
 o.linebreak = true
