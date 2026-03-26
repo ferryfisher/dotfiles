@@ -1,4 +1,18 @@
 local PaperWM = hs.loadSpoon("PaperWM")
+local alert = hs.alert
+alert.defaultStyle = {
+    strokeWidth     = 2,
+    strokeColor     = { white = 1, alpha = 0.65 },
+    fillColor       = { white = 0, alpha = 0.75 },
+    textColor       = { white = 1, alpha = 0.75 },
+    textFont        = ".AppleSystemUIFont",
+    textSize        = 15,
+    radius          = 15,
+    atScreenEdge    = 2,
+    fadeInDuration  = 0,
+    fadeOutDuration = 0,
+    padding         = nil,
+}
 local filter = hs.window.filter
 local modal = hs.hotkey.modal.new({ "alt" }, "space")
 
@@ -46,6 +60,12 @@ local hotkeys = {
 
     { {},                  "escape", function() modal:exit() end }
 }
+
+local uuid = nil
+
+function modal:entered() uuid = alert("PaperWM", '') end
+
+function modal:exited() alert.closeSpecific(uuid) end
 
 for _, hotkey in next, hotkeys do
     modal:bind(table.unpack(hotkey))
