@@ -12,6 +12,7 @@
 [diff]
     algorithm = histogram
     colorMoved = zebra
+    context = 10
     renames = true
     tool = nvimdiff
     wordDiff = true
