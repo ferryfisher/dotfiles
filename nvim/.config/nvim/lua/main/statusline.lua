@@ -160,7 +160,7 @@ local function default()
         "%{ (&ft == 'cpp' ? 'C++' : toupper(strpart(&ft, 0, 1)) . strpart(&ft, 1)) }",
         stl_diagnostic(),
         [[%{(bufname() !=# '' && &bt != 'terminal' ? ')' : '')}]],
-        "  %P (%{printf('0x%03X, 0x%03X', line('.'), col('.'))})",
+        "  %P (%{printf('L%-3d, C%-2d', line('.'), col('.'))})",
     }
 
     local e, pieces = {}, {}
