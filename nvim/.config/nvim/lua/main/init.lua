@@ -1,6 +1,27 @@
 local autocmd = vim.api.nvim_create_autocmd
 local group = vim.api.nvim_create_augroup("ferry", {})
 
+local parsers = {
+    "c",
+    "cmake",
+    "cpp",
+    "css",
+    "diff",
+    "html",
+    "json",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "nix",
+    "python",
+    "rust",
+    "query",
+    "toml",
+    "yaml",
+    "vim",
+    "vimdoc"
+}
+
 autocmd("CmdlineEnter", {
     group = group,
     once = true,
@@ -8,6 +29,27 @@ autocmd("CmdlineEnter", {
         if vim.version().minor < 12 then return end
 
         require("vim._core.ui2").enable({})
+    end
+})
+
+autocmd("FileType", {
+    desc = "Treesitter highlighting",
+    pattern = parsers,
+    group = group,
+    callback = function(opts)
+        local lang = vim.treesitter.language.get_lang(vim.bo[opts.buf].filetype)
+
+        if not vim.treesitter.language.add(lang) then
+            require("nvim-treesitter").install(lang, { summary = true })
+        end
+
+        if vim.treesitter.language.add(lang) then
+            vim.treesitter.start(opts.buf, lang)
+
+            local wo = vim.wo[0][0]
+            wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            wo.foldmethod = "expr"
+        end
     end
 })
 
