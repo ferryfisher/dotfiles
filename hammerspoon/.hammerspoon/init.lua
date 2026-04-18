@@ -68,7 +68,15 @@ function modal:entered() uuid = alert("PaperWM", '') end
 function modal:exited() alert.closeSpecific(uuid) end
 
 for _, hotkey in next, hotkeys do
-    modal:bind(table.unpack(hotkey))
+    local mods, key, message, fn = table.unpack(hotkey)
+
+    modal:bind(mods, key, message, function()
+        if not fn then return end
+
+        fn()
+
+        modal:exit()
+    end)
 end
 
 filter.copy(PaperWM.window_filter):subscribe(
