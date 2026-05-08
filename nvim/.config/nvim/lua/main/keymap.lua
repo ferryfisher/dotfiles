@@ -111,10 +111,13 @@ nmap("<A-[>", cmd("vertical resize +5"))
 do
     local modes = { "i", "c" }
 
-    keymap(modes, "<C-a>", "<Home>")
+    keymap(modes, "<C-d>", "<Del>")
     keymap(modes, "<C-e>", "<End>")
     keymap(modes, "<C-b>", "<Left>")
     keymap(modes, "<C-f>", "<Right>")
     keymap(modes, "<C-n>", "<Down>")
     keymap(modes, "<C-p>", "<Up>")
 end
+
+keymap("c", "<C-a>", "<Home>")
+keymap("i", "<C-a>", "<C-o>^")
