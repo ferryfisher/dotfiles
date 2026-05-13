@@ -48,6 +48,7 @@ o.shortmess = "acCoOstTF"
 o.pumheight = 15
 o.pummaxwidth = 30
 o.scrolloff = 3
+o.scrolloffpad = 1
 o.showtabline = 0
 o.sidescrolloff = 5
 o.showcmd = false
