@@ -8,7 +8,6 @@ return {
         commentStyle = italic,
         keywordStyle = italic,
         statementStyle = { bold = false },
-        compile = true, -- do :KanagawaCompile after modifying theme and restarting
         transparent = true,
         terminalcolors = true,
 
