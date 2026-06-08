@@ -33,7 +33,7 @@ autocmd("CmdlineEnter", {
 })
 
 autocmd("FileType", {
-    desc = "Treesitter highlighting",
+    desc = "Treesitter",
     pattern = parsers,
     group = group,
     callback = function(opts)
@@ -49,6 +49,8 @@ autocmd("FileType", {
             local wo = vim.wo[0][0]
             wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
             wo.foldmethod = "expr"
+
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
     end
 })
