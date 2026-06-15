@@ -22,7 +22,7 @@ M.sections = {
         border = theme.crust,
         text = theme.text,
     },
-    apple = {
+    nix = {
         logo = 0xff6BB8EE,
         bg = 0xff2A2A36,
         shadow = 0xff1F1F28,

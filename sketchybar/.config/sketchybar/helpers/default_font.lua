@@ -1,6 +1,6 @@
 return {
-    text = "JetBrainsMono Nerd Font Propo",    -- Used for text
-    numbers = "JetBrainsMono Nerd Font Propo", -- Used for numbers
+    text = "JetBrainsMono Nerd Font Propo",
+    numbers = "JetBrainsMono Nerd Font Propo",
     weather = "JetBrainsMono Nerd Font Propo",
 
     -- Unified font style map

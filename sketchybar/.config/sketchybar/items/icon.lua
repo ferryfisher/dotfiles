@@ -1,14 +1,14 @@
 local colors = require("colors").sections
 local icons = require "icons"
 
-local apple = sbar.add("item", {
+local icon = sbar.add("item", {
     icon = {
         font = { size = 22 },
-        string = icons.apple,
+        string = icons.nix,
         padding_right = 15,
         padding_left = 15,
         y_offset = 1,
-        color = colors.apple.logo,
+        color = colors.nix.logo,
     },
 
     label = {
@@ -16,18 +16,18 @@ local apple = sbar.add("item", {
     },
 
     background = {
-        color = colors.apple.bg,
+        color = colors.nix.bg,
         shadow = {
-            color = colors.apple.shadow
+            color = colors.nix.shadow
         }
     },
 
-    click_script = "sleep 0.5; sketchybar --reload"
+    click_script = "sketchybar --reload"
 })
 
-apple:subscribe("mouse.clicked", function()
+icon:subscribe("mouse.clicked", function()
     sbar.animate("tanh", 8, function()
-        apple:set {
+        icon:set {
             background = {
                 shadow = {
                     distance = 0,
@@ -37,7 +37,7 @@ apple:subscribe("mouse.clicked", function()
             padding_left = 8,
             padding_right = 0,
         }
-        apple:set {
+        icon:set {
             background = {
                 shadow = {
                     distance = 4,

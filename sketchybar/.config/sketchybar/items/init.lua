@@ -1,5 +1,5 @@
 --left
-require "items.apple"
+require "items.icon"
 require "items.spaces"
 
 --right (reverse order)

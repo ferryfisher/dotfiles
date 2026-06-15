@@ -2,7 +2,6 @@ local colors = require("colors").sections.spaces
 local icons = require "icons"
 local icon_map = require "helpers.icon_map"
 
--- local spaces = {'一', '二', '三', '四', '五', '六', '七', '八', '九', '十'}
 local spaces = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" }
 
 for i = 1, 10 do
@@ -58,7 +57,7 @@ for i = 1, 10 do
         if tonumber(env.INFO.space) ~= i then return end
         local no_app = true
         local icon_line = ""
-        for app in pairs(env.INFO.apps) do
+        for app in next, env.INFO.apps do
             no_app = false
             local lookup = icon_map[app]
             local icon = lookup or icon_map["default"]
