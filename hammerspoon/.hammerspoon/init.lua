@@ -1,4 +1,4 @@
-local PaperWM = hs.loadSpoon("PaperWM")
+local PaperWM = assert(hs.loadSpoon("PaperWM"), "PaperWM.spoon could not be loaded.")
 local alert = hs.alert
 alert.defaultStyle = {
     strokeWidth     = 2,
@@ -84,6 +84,7 @@ filter.copy(PaperWM.window_filter):subscribe(
     actions.full_width
 )
 
+PaperWM.external_bar = { top = 32 }
 PaperWM.window_gap = 5
 
 PaperWM:start()
