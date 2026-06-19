@@ -53,11 +53,11 @@ autocmd("LspAttach", {
 
 vim.lsp.enable({
     "asm-lsp",
-    "lua_ls",
-    "rust_analyzer",
-    "nil_ls",
     "clangd",
+    "lua_ls",
+    "nil_ls",
     "ocamllsp",
+    "rust_analyzer",
 })
 
 vim.diagnostic.config({
