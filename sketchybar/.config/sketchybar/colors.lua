@@ -2,7 +2,7 @@ local theme = require "theme"
 
 local M = {}
 
-local with_alpha = function(color, alpha)
+local function with_alpha(color, alpha)
     if alpha > 1.0 or alpha < 0.0 then
         return color
     end
