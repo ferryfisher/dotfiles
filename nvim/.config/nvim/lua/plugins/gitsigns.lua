@@ -1,6 +1,8 @@
 return {
     "lewis6991/gitsigns.nvim",
+
     event = "BufReadPre",
+
     keys = {
         {
             "<leader>g[",
@@ -15,5 +17,6 @@ return {
             desc = "Gitsigns next_hunk"
         }
     },
+
     opts = {}
 }

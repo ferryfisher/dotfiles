@@ -16,6 +16,7 @@ local type_hlgroup = {
 
 return {
     "stevearc/oil.nvim",
+
     keys = {
         {
             "<leader>o",
@@ -23,6 +24,7 @@ return {
             desc = "Oil"
         }
     },
+
     opts = {
         delete_to_trash = true,
         watch_for_changes = true,
@@ -62,6 +64,7 @@ return {
             { "size",  align = "right",     highlight = "Number" },
             { "mtime", highlight = "String" },
         },
+
         keymaps = {
             ["<M-s>"] = { "actions.select", opts = { horizontal = true } },
             ["<M-v>"] = { "actions.select", opts = { vertical = true } },
