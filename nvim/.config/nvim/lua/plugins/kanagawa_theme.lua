@@ -1,6 +1,5 @@
 local italic = { italic = true }
 
-
 return {
     "rebelot/kanagawa.nvim",
 
