@@ -42,8 +42,9 @@ o.shiftround = true
 
 -- Interface {{{
 o.completeitemalign = "kind,abbr,menu"
-o.completeopt = "menu,menuone,noinsert,nosort,fuzzy,popup,preselect"
+o.completeopt = "menu,menuone,noinsert,nosort,fuzzy,popup"
 o.wildmode = "noselect:full"
+o.wildoptions = "fuzzy,pum,tagfile"
 
 o.shortmess = "acCoOstTF"
 o.pumheight = 15
