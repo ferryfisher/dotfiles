@@ -39,6 +39,8 @@ autocmd("FileType", {
     callback = function(opts)
         local lang = vim.treesitter.language.get_lang(vim.bo[opts.buf].filetype)
 
+        if not lang then return end
+
         if not vim.treesitter.language.add(lang) then
             require("nvim-treesitter").install(lang, { summary = true })
         end
