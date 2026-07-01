@@ -71,7 +71,7 @@ o.wrap = false
 -- }}}
 
 -- List {{{
-o.listchars = "tab:» ,nbsp:+,trail:·,extends:→,precedes:←"
+o.listchars = "extends:→,nbsp:+,precedes:←,tab:» ,trail:·"
 o.fillchars = "eob: ,fold: "
 o.foldtext = ""
 o.foldlevelstart = 255
