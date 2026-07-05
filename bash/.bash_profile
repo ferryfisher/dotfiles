@@ -6,4 +6,3 @@ export HOMEBREW_PREFIX=~/.brew
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
 . ~/.bashrc
-. "$HOME/.cargo/env"
