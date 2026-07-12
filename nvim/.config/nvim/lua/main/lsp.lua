@@ -55,7 +55,7 @@ vim.lsp.enable({
     "asm-lsp",
     "clangd",
     "lua_ls",
-    "nil_ls",
+    "nixd",
     "ocamllsp",
     "rust_analyzer",
 })
