@@ -14,8 +14,8 @@ return {
 
     opts = {
         format_on_save = {
-            timeout_ms = 500,
             lsp_format = "fallback",
+            timeout_ms = 500,
         },
 
         formatters_by_ft = {
@@ -23,6 +23,7 @@ return {
             cpp = { "clang-format" },
             go = { "gofmt" },
             lua = { "stylua" },
+            nix = { "nixfmt" },
             ocaml = { "ocamlformat" },
             python = { "ruff_fix", "ruff_format" },
             rust = { "rustfmt" },
