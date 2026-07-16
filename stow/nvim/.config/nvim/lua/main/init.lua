@@ -90,4 +90,4 @@ autocmd("UIEnter", {
     end
 })
 
-require("main.option")
+require("main.options")
