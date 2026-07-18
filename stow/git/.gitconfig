@@ -15,9 +15,11 @@
     colorMoved = zebra
     context = 10
     renames = true
-    tool = nvimdiff
+    tool = nvim_difftool
     wordDiff = true
     wsErrorHighlight = all
+[difftool "nvim_difftool"]
+    cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
 [fetch]
     prune = true
     pruneTags = true
