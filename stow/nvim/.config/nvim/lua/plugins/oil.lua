@@ -19,9 +19,9 @@ return {
 
     keys = {
         {
-            "<leader>o",
+            "-",
             "<cmd>Oil<cr>",
-            desc = "Oil"
+            desc = "Oil parent directory"
         }
     },
 
