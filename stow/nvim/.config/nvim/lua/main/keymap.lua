@@ -31,7 +31,7 @@ end
  @param command string
 --]=]
 local function cmd(command)
-    return "<cmd>" .. command .. "<CR>"
+    return "<cmd>" .. command .. "<cr>"
 end
 
 -- LSP mappings

@@ -6,7 +6,7 @@ return {
     keys = {
         {
             "<leader>lf",
-            "<cmd>lua require('conform').format({ async = true })<CR>",
+            "<cmd>lua require('conform').format({ async = true })<cr>",
             desc = "Format using conform.nvim"
         }
     },

@@ -6,12 +6,12 @@ return {
     keys = {
         {
             "<leader>g[",
-            "<cmd>Gitsigns prev_hunk<CR>",
+            "<cmd>Gitsigns prev_hunk<cr>",
             desc = "Gitsigns prev_hunk"
         },
         {
             "<leader>g]",
-            "<cmd>Gitsigns next_hunk<CR>",
+            "<cmd>Gitsigns next_hunk<cr>",
             desc = "Gitsigns next_hunk"
         }
     },
