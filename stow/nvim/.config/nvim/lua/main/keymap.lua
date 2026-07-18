@@ -90,7 +90,6 @@ autocmd("LspAttach", {
     end
 })
 -- General
-nmap("<ESC>", cmd("nohlsearch"))
 nmap("<C-q>", cmd("q"))
 nmap("<C-s>", cmd("write"))
 nmap("<C-n>", cmd("set number!"))

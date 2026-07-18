@@ -85,7 +85,9 @@ autocmd("UIEnter", {
 
             vim.lsp.log.set_level(vim.log.levels.OFF)
 
-            vim.cmd.packadd("nvim.undotree")
+            local packadd = vim.cmd.packadd
+            packadd("nohlsearch")
+            packadd("nvim.undotree")
         end)
     end
 })
