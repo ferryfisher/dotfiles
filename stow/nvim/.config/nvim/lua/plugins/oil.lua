@@ -17,6 +17,20 @@ local type_hlgroup = {
 return {
     "stevearc/oil.nvim",
 
+    init = function()
+        local api = vim.api
+        api.nvim_create_autocmd("BufEnter", {
+            group = api.nvim_create_augroup("plugins.oil", { clear = true }),
+            pattern = "oil://*",
+            callback = function()
+                require("oil.actions").cd.callback({
+                    scope = "win",
+                    silent = true
+                })
+            end
+        })
+    end,
+
     keys = {
         {
             "-",
