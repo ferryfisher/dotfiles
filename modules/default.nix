@@ -78,7 +78,7 @@ in
             rustc
             rustfmt
             rust-analyzer
-            # stylua
+            stylua
 
             ### misc
             (aspellWithDicts (
