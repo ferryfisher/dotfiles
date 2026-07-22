@@ -8,7 +8,9 @@ autocmd("LspAttach", {
     callback = function(args)
         local client = lsp.get_client_by_id(args.data.client_id)
 
-        if not client then return end
+        if not client then
+            return
+        end
 
         local buf = args.buf
         local chars = client.server_capabilities.completionProvider.triggerCharacters
@@ -20,9 +22,7 @@ autocmd("LspAttach", {
                 set[v] = true
             end
 
-            for k in string.gmatch(
-                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", '.')
-            do
+            for k in string.gmatch("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", ".") do
                 if not set[k] then
                     table.insert(chars, k)
                 end
@@ -46,7 +46,7 @@ autocmd("LspAttach", {
                     win.concealcursor = "niv"
                     win.wrap = true
                 end
-            end
+            end,
         })
     end,
 })

@@ -33,8 +33,7 @@ local function stl_lsp()
                 return ""
             end
             local root_dir = "single"
-            local client_names = vim
-                .iter(clients)
+            local client_names = vim.iter(clients)
                 :map(function(client)
                     if args.event == "LspDetach" and client.id == args.data.client_id then
                         return nil
@@ -47,14 +46,19 @@ local function stl_lsp()
                 end)
                 :totable()
 
-            local msg = str_format("[%s:%s]",
+            local msg = str_format(
+                "[%s:%s]",
                 root_dir ~= "single" and fnamemodify(root_dir, ":t") or "single",
                 table.concat(client_names, ",")
             )
             if args.data and args.data.params then
                 local val = args.data.params.value
                 if val.message and val.kind ~= "end" then
-                    msg = str_format("%s %s", val.title, (val.percentage and val.percentage .. "%" or ""))
+                    msg = str_format(
+                        "%s %s",
+                        val.title,
+                        (val.percentage and val.percentage .. "%" or "")
+                    )
                 end
             end
             return "  %-20s" .. msg
@@ -89,7 +93,10 @@ local function stl_gitinfo()
                         { "git", "config", "--get", "init.defaultBranch" },
                         { text = true },
                         function(result)
-                            coroutine.resume(co, #result.stdout > 0 and vim.trim(result.stdout) or nil)
+                            coroutine.resume(
+                                co,
+                                #result.stdout > 0 and vim.trim(result.stdout) or nil
+                            )
                         end
                     )
                     dict["head"] = coroutine.yield()
@@ -101,7 +108,8 @@ local function stl_gitinfo()
                     local dict_idx = dict[order[i]]
 
                     if i == 1 or (type(dict_idx) == "number" and dict_idx > 0) then
-                        parts = str_format("%s %s",
+                        parts = str_format(
+                            "%s %s",
                             parts,
                             str_format("%%#Git%s#%s%%*", alias[i], signs[i] .. dict_idx)
                         )
@@ -120,7 +128,10 @@ end
 local function stl_diagnostic()
     return {
         stl = function()
-            if not vim.diagnostic.is_enabled({ bufnr = 0 }) or #lsp.get_clients({ bufnr = 0 }) == 0 then
+            if
+                not vim.diagnostic.is_enabled({ bufnr = 0 })
+                or #lsp.get_clients({ bufnr = 0 }) == 0
+            then
                 return ""
             end
             local t = {}
@@ -155,7 +166,7 @@ local function default()
         stl_progress(),
         stl_lsp(),
         stl_gitinfo(),
-        '%=%=',
+        "%=%=",
         [[%{(bufname() !=# '' && &bt != 'terminal' ? '(' : '')}]],
         "%{ (&ft == 'cpp' ? 'C++' : toupper(strpart(&ft, 0, 1)) . strpart(&ft, 1)) }",
         stl_diagnostic(),
@@ -164,37 +175,33 @@ local function default()
     }
 
     local e, pieces = {}, {}
-    iter(next, (comps))
-        :map(function(key, item)
-            if type(item) == "string" then
-                pieces[#pieces + 1] = item
-            elseif type(item.stl) == "string" then
-                pieces[#pieces + 1] = stl_format(item.name, item.stl)
-            else
-                pieces[#pieces + 1] =
-                    item.default
-                    and item.name
-                    and stl_format(item.name, item.default)
-                    or ""
+    iter(next, comps):map(function(key, item)
+        if type(item) == "string" then
+            pieces[#pieces + 1] = item
+        elseif type(item.stl) == "string" then
+            pieces[#pieces + 1] = stl_format(item.name, item.stl)
+        else
+            pieces[#pieces + 1] = item.default and item.name and stl_format(item.name, item.default)
+                or ""
 
-                for _, event in next, item.event do
-                    e[event] = e[event] or {}
-                    e[event][#e[event] + 1] = key
-                end
+            for _, event in next, item.event do
+                e[event] = e[event] or {}
+                e[event][#e[event] + 1] = key
             end
-            if item.attr and item.name then
-                hl(0, str_format("Git%s", item.name), item.attr)
-            end
-        end)
-        :totable()
+        end
+        if item.attr and item.name then
+            hl(0, str_format("Git%s", item.name), item.attr)
+        end
+    end):totable()
     return comps, e, pieces
 end
 
 local function render(comps, events, pieces)
     return co.create(function(args)
         while true do
-            local event = args.event == "User" and str_format("%s %s", args.event, args.match) or args.event
-            for _, idx in next, (events[event]) do
+            local event = args.event == "User" and str_format("%s %s", args.event, args.match)
+                or args.event
+            for _, idx in next, events[event] do
                 if comps[idx].cond and comps[idx].cond() == false then
                     goto continue
                 end

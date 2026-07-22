@@ -7,14 +7,14 @@ return {
         {
             "<leader>g[",
             "<cmd>Gitsigns prev_hunk<cr>",
-            desc = "Gitsigns prev_hunk"
+            desc = "Gitsigns prev_hunk",
         },
         {
             "<leader>g]",
             "<cmd>Gitsigns next_hunk<cr>",
-            desc = "Gitsigns next_hunk"
-        }
+            desc = "Gitsigns next_hunk",
+        },
     },
 
-    opts = {}
+    opts = {},
 }

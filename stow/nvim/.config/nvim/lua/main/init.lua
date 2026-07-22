@@ -19,17 +19,19 @@ local parsers = {
     "toml",
     "yaml",
     "vim",
-    "vimdoc"
+    "vimdoc",
 }
 
 autocmd("CmdlineEnter", {
     group = group,
     once = true,
     callback = function()
-        if vim.version().minor < 12 then return end
+        if vim.version().minor < 12 then
+            return
+        end
 
         require("vim._core.ui2").enable({})
-    end
+    end,
 })
 
 autocmd("FileType", {
@@ -39,7 +41,9 @@ autocmd("FileType", {
     callback = function(opts)
         local lang = vim.treesitter.language.get_lang(vim.bo[opts.buf].filetype)
 
-        if not lang then return end
+        if not lang then
+            return
+        end
 
         if not vim.treesitter.language.add(lang) then
             require("nvim-treesitter").install(lang, { summary = true })
@@ -54,14 +58,14 @@ autocmd("FileType", {
 
             vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
-    end
+    end,
 })
 
 autocmd("TextYankPost", {
     group = group,
     callback = function()
         vim.hl.hl_op({ higroup = "IncSearch" })
-    end
+    end,
 })
 
 autocmd("InsertEnter", {
@@ -70,7 +74,7 @@ autocmd("InsertEnter", {
     once = true,
     callback = function()
         require("main.pairs")
-    end
+    end,
 })
 
 autocmd("UIEnter", {
@@ -89,7 +93,7 @@ autocmd("UIEnter", {
             packadd("nohlsearch")
             packadd("nvim.undotree")
         end)
-    end
+    end,
 })
 
 require("main.options")

@@ -40,54 +40,22 @@ autocmd("LspAttach", {
     once = true,
 
     callback = function()
-        nmap(
-            "<leader>ld",
-            buf.definition,
-            "Find definition of symbol at point"
-        )
+        nmap("<leader>ld", buf.definition, "Find definition of symbol at point")
 
-        nmap(
-            "<leader>lr",
-            buf.references,
-            "List all references to symbol at point"
-        )
+        nmap("<leader>lr", buf.references, "List all references to symbol at point")
 
-        nmap(
-            "<leader>ln",
-            buf.rename,
-            "Rename symbol at point"
-        )
+        nmap("<leader>ln", buf.rename, "Rename symbol at point")
 
-        nmap(
-            "<leader>la",
-            buf.code_action,
-            "Perform code action at point"
-        )
+        nmap("<leader>la", buf.code_action, "Perform code action at point")
 
-        nmap(
-            "<leader>ls",
-            buf.signature_help,
-            "Show signature help for function at point"
-        )
+        nmap("<leader>ls", buf.signature_help, "Show signature help for function at point")
 
-        nmap(
-            "<leader>li",
-            buf.implementation,
-            "Go to implementation of symbol at point"
-        )
+        nmap("<leader>li", buf.implementation, "Go to implementation of symbol at point")
 
-        nmap(
-            "<leader>lt",
-            buf.type_definition,
-            "Find type definition of symbol at point"
-        )
+        nmap("<leader>lt", buf.type_definition, "Find type definition of symbol at point")
 
-        nmap(
-            "<leader>le",
-            diagnostic.open_float,
-            "Show diagnostics for line at point"
-        )
-    end
+        nmap("<leader>le", diagnostic.open_float, "Show diagnostics for line at point")
+    end,
 })
 -- General
 nmap("<C-q>", cmd("q"))

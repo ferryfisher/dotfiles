@@ -7,72 +7,72 @@ return {
         {
             "<leader>fb",
             "<cmd>FzfLua buffers<cr>",
-            desc = "FzfLua buffers"
+            desc = "FzfLua buffers",
         },
         {
             "<leader>ff",
             "<cmd>FzfLua files<cr>",
-            desc = "FzfLua files"
+            desc = "FzfLua files",
         },
         {
             "<leader>fh",
             "<cmd>FzfLua help_tags<cr>",
-            desc = "FzfLua help_tags"
+            desc = "FzfLua help_tags",
         },
         {
             "<leader>f/",
             "<cmd>FzfLua lgrep_curbuf<cr>",
-            desc = "FzfLua lgrep_curbuf"
+            desc = "FzfLua lgrep_curbuf",
         },
         {
             "<leader>fl",
             "<cmd>FzfLua live_grep<cr>",
-            desc = "FzfLua live_grep"
+            desc = "FzfLua live_grep",
         },
         {
             "<leader>fd",
             "<cmd>FzfLua lsp_document_diagnostics<cr>",
-            desc = "FzfLua lsp_document_diagnostics"
+            desc = "FzfLua lsp_document_diagnostics",
         },
         {
             "<leader>fs",
             "<cmd>FzfLua lsp_document_symbols<cr>",
-            desc = "FzfLua lsp_document_symbols"
+            desc = "FzfLua lsp_document_symbols",
         },
         {
             "<leader>fD",
             "<cmd>FzfLua lsp_workspace_diagnostics<cr>",
-            desc = "FzfLua lsp_workspace_diagnostics"
+            desc = "FzfLua lsp_workspace_diagnostics",
         },
         {
             "<leader>fo",
             "<cmd>FzfLua oldfiles<cr>",
-            desc = "FzfLua oldfiles"
+            desc = "FzfLua oldfiles",
         },
         {
             "<leader>fq",
             "<cmd>FzfLua quickfix<cr>",
-            desc = "FzfLua quickfix list"
+            desc = "FzfLua quickfix list",
         },
         {
             "<leader>fQ",
             "<cmd>FzfLua lgrep_quickfix<cr>",
-            desc = "FzfLua search quickfix list"
+            desc = "FzfLua search quickfix list",
         },
         {
             "<leader>gc",
             "<cmd>FzfLua git_commits<cr>",
-            desc = "git_commits FzfLua"
+            desc = "git_commits FzfLua",
         },
         {
             "<leader>gs",
             "<cmd>FzfLua git_status<cr>",
-            desc = "git_status FzfLua"
+            desc = "git_status FzfLua",
         },
         {
             "<leader>gf",
             "<cmd>FzfLua git_files<cr>",
-            desc = "git_files FzfLua"
+            desc = "git_files FzfLua",
         },
     },
 
@@ -87,6 +87,6 @@ return {
             preview = { vertical = "right:50%", default = "builtin" },
         },
 
-        lsp = { symbols = { symbol_style = 3 } }
-    }
+        lsp = { symbols = { symbol_style = 3 } },
+    },
 }

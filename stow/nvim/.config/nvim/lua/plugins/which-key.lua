@@ -23,7 +23,7 @@ return {
                 Left = "left ",
                 Right = "right ",
                 Space = "SPC ",
-            }
+            },
         },
 
         spec = {
@@ -32,5 +32,5 @@ return {
             { "<leader>l", group = "LSP" },
             { "<leader>r", group = "Replua" },
         },
-    }
+    },
 }

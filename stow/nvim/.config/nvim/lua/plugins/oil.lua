@@ -3,7 +3,7 @@ local permissions_hlgroup = {
     ["r"] = "DiagnosticHint",
     ["w"] = "DiagnosticWarn",
     ["x"] = "DiagnosticError",
-    ["s"] = "DiagnosticInfo"
+    ["s"] = "DiagnosticInfo",
 }
 
 local type_hlgroup = {
@@ -11,7 +11,7 @@ local type_hlgroup = {
     ["d"] = "Directory",
     ["l"] = "Special",
     ["p"] = "Conceal",
-    ["s"] = "Underlined"
+    ["s"] = "Underlined",
 }
 
 return {
@@ -25,9 +25,9 @@ return {
             callback = function()
                 require("oil.actions").cd.callback({
                     scope = "win",
-                    silent = true
+                    silent = true,
                 })
-            end
+            end,
         })
     end,
 
@@ -35,8 +35,8 @@ return {
         {
             "-",
             "<cmd>Oil<cr>",
-            desc = "Oil parent directory"
-        }
+            desc = "Oil parent directory",
+        },
     },
 
     opts = {
@@ -55,7 +55,7 @@ return {
                 },
                 highlight = function(string)
                     return type_hlgroup[string] or type_hlgroup["-"]
-                end
+                end,
             },
             {
                 "permissions",
@@ -63,19 +63,17 @@ return {
                     local hl = {}
 
                     for i = 1, #string do
-                        table.insert(
-                            hl,
-                            {
-                                permissions_hlgroup[string:sub(i, i)],
-                                i - 1, i
-                            }
-                        )
+                        table.insert(hl, {
+                            permissions_hlgroup[string:sub(i, i)],
+                            i - 1,
+                            i,
+                        })
                     end
 
                     return hl or permissions_hlgroup["-"]
-                end
+                end,
             },
-            { "size",  align = "right",     highlight = "Number" },
+            { "size", align = "right", highlight = "Number" },
             { "mtime", highlight = "String" },
         },
 
@@ -86,14 +84,14 @@ return {
             ["<C-j>"] = false,
             ["<C-k>"] = false,
             ["<C-l>"] = false,
-            ["<C-s>"] = false
+            ["<C-s>"] = false,
         },
 
         view_options = {
             show_hidden = true,
             is_always_hidden = function(name)
                 return name == ".."
-            end
-        }
-    }
+            end,
+        },
+    },
 }

@@ -7,8 +7,8 @@ return {
         {
             "<leader>lf",
             "<cmd>lua require('conform').format({ async = true })<cr>",
-            desc = "Format using conform.nvim"
-        }
+            desc = "Format using conform.nvim",
+        },
     },
 
     opts = {
@@ -37,6 +37,6 @@ return {
 
         default_format_opts = {
             lsp_format = "fallback",
-        }
-    }
+        },
+    },
 }
