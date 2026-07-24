@@ -5,6 +5,7 @@ export EDITOR=$(command -v nvim || command -v vim)
 set -o vi
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
 
 fastfetch
 
