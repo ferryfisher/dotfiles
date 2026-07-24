@@ -6,8 +6,11 @@ mkShellNoCC {
   packages = (
     with pkgs;
     [
+      deadnix
       git
+      nixfmt
       sops
+      statix
     ]
   );
 }
