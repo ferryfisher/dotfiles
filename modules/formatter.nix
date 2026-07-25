@@ -3,7 +3,6 @@
 treefmt.withConfig {
   settings = {
     allow-missing-formatter = false;
-    fail-on-change = true;
     on-unmatched = "info";
     tree-root-file = "flake.nix";
 
