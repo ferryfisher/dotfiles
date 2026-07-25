@@ -37,6 +37,8 @@ in
     };
   });
 
+  checks = forAllSystems (pkgs: import ./checks { inherit inputs pkgs; });
+
   devShells = forAllSystems (pkgs: {
     default = pkgs.callPackage ./shell.nix { };
   });
