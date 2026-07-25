@@ -33,7 +33,8 @@ runCommandLocal "format-check"
     git add -A
     git commit -m init --quiet
 
-    treefmt --version
+    treefmt --version 
+    printf ' '
     treefmt --no-cache
 
     git status --short
