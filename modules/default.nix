@@ -41,5 +41,5 @@ in
     default = pkgs.callPackage ./shell.nix { };
   });
 
-  formatter = forAllSystems (pkgs: pkgs.nixfmt);
+  formatter = forAllSystems (pkgs: pkgs.callPackage ./formatter.nix { });
 }
