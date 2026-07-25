@@ -1,5 +1,5 @@
 {
-    "workspace.library": [
-        "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
-    ]
+  "workspace.library": [
+    "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/"
+  ]
 }

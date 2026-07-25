@@ -17,9 +17,8 @@ return {
             if
                 path ~= vim.fn.stdpath("config")
                 and (
-                    vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(
-                        path .. "/.luarc.jsonc"
-                    )
+                    vim.uv.fs_stat(path .. "/.luarc.json")
+                    or vim.uv.fs_stat(path .. "/.luarc.jsonc")
                 )
             then
                 return

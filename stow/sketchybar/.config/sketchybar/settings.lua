@@ -1,8 +1,8 @@
 return {
-	paddings = 2,
-	group_paddings = 5,
+    paddings = 2,
+    group_paddings = 5,
 
-	icons = "NerdFont",
+    icons = "NerdFont",
 
-	font = require("helpers.default_font"),
+    font = require("helpers.default_font"),
 }

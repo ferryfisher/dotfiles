@@ -5,12 +5,12 @@ local build_path = home_dir .. "/.local/share/sketchybar_lua/"
 local sketchybar = sbar_path .. "sketchybar.so"
 
 local function has_sketchybar()
-	return io.open(sketchybar)
+    return io.open(sketchybar)
 end
 
 if not has_sketchybar() then
-	os.execute(
-		[[
+    os.execute(
+        [[
         set -e
 
         git clone https://github.com/FelixKratz/SbarLua /tmp/SbarLua
@@ -18,10 +18,10 @@ if not has_sketchybar() then
         make install
         rm -rf /tmp/SbarLua/
         ]]
-			.. string.format('mv "%s" "%s"', build_path .. "sketchybar.so", sketchybar)
-			.. "\n"
-			.. string.format('rm -rf "%s"', build_path)
-	)
+            .. string.format('mv "%s" "%s"', build_path .. "sketchybar.so", sketchybar)
+            .. "\n"
+            .. string.format('rm -rf "%s"', build_path)
+    )
 end
 
 -- Add the sketchybar module to the package cpath

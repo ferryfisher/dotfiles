@@ -1,12 +1,42 @@
 {
-  "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
-  "fzf-lua": { "branch": "main", "commit": "511651f198068ef5841ee1635ade58daa2486ef7" },
-  "gitsigns.nvim": { "branch": "main", "commit": "31d6fb2d618bca1482b9f274751ead5f03461408" },
-  "indentmini.nvim": { "branch": "main", "commit": "38572ce5a7a064a5deb89d6d861b7c40fc929ab1" },
-  "kanagawa.nvim": { "branch": "master", "commit": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3" },
-  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
-  "nvim-treesitter": { "branch": "main", "commit": "bd41519ff7901da11ba6e1c8f419f17f2d94305a" },
-  "oil.nvim": { "branch": "master", "commit": "b73018b75affd13fa38e2fc94ef753b465f770d7" },
-  "visual-whitespace.nvim": { "branch": "main", "commit": "d1f8889dd09ca9b07bc3b7af7cd5d1bfb5a7ea71" },
-  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
+  "conform.nvim": {
+    "branch": "master",
+    "commit": "619363c30309d29ffa631e67c8183f2a72caa373"
+  },
+  "fzf-lua": {
+    "branch": "main",
+    "commit": "511651f198068ef5841ee1635ade58daa2486ef7"
+  },
+  "gitsigns.nvim": {
+    "branch": "main",
+    "commit": "31d6fb2d618bca1482b9f274751ead5f03461408"
+  },
+  "indentmini.nvim": {
+    "branch": "main",
+    "commit": "38572ce5a7a064a5deb89d6d861b7c40fc929ab1"
+  },
+  "kanagawa.nvim": {
+    "branch": "master",
+    "commit": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3"
+  },
+  "lazy.nvim": {
+    "branch": "main",
+    "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97"
+  },
+  "nvim-treesitter": {
+    "branch": "main",
+    "commit": "bd41519ff7901da11ba6e1c8f419f17f2d94305a"
+  },
+  "oil.nvim": {
+    "branch": "master",
+    "commit": "b73018b75affd13fa38e2fc94ef753b465f770d7"
+  },
+  "visual-whitespace.nvim": {
+    "branch": "main",
+    "commit": "d1f8889dd09ca9b07bc3b7af7cd5d1bfb5a7ea71"
+  },
+  "which-key.nvim": {
+    "branch": "main",
+    "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a"
+  }
 }
