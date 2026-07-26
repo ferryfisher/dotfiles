@@ -8,7 +8,10 @@
 
 runCommandLocal "format-check"
   {
-    buildInputs = [
+    __structuredAttrs = true;
+    strictDeps = true;
+
+    nativeBuildInputs = [
       git
       git-lfs
       self.formatter.${stdenv.hostPlatform.system}
