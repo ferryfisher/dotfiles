@@ -4,6 +4,8 @@
 
 </div>
 
+## Installation
+
 > [!note]
 >
 > Install `stow` with `Nix` (package manager).
@@ -16,3 +18,8 @@ Package dependencies for these dotfiles can be added through `nix profile` and
 [Homebrew](https://brew.sh) casks through the repository's [Brewfile](Brewfile)
 
 dotfiles managed via [GNU Stow](https://www.gnu.org/software/stow/).
+
+## Formatting
+
+`nix fmt` formats the repository and `nix flake check` runs flake tests
+(including formatting checks).
