@@ -13,6 +13,7 @@ local parsers = {
     "markdown",
     "markdown_inline",
     "nix",
+    "ocaml",
     "python",
     "rust",
     "query",
