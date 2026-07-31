@@ -27,10 +27,6 @@ autocmd("CmdlineEnter", {
     group = group,
     once = true,
     callback = function()
-        if vim.version().minor < 12 then
-            return
-        end
-
         require("vim._core.ui2").enable({})
     end,
 })
