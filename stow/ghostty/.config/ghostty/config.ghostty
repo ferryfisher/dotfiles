@@ -1,12 +1,12 @@
-command = direct:$HOME/.nix-profile/bin/bash
-
-confirm-close-surface = false
 background-opacity = 0.8
+command = direct:$HOME/.nix-profile/bin/bash
+confirm-close-surface = false
 font-family = "JetBrains Mono"
 font-feature = "-calt, -clig, -liga"
 font-size = 12
 macos-titlebar-style = "hidden"
 mouse-hide-while-typing = true
+shell-integration-features = no-cursor
 theme = "Kanagawa Wave"
 window-padding-y = 2,8
 window-show-tab-bar = auto
