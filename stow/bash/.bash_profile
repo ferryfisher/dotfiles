@@ -1,8 +1,8 @@
-# Silence MacOS zsh terminal warning on startup
-export BASH_SILENCE_DEPRECATION_WARNING=1
+export EDITOR=$(command -v nvim || command -v vim)
+export SHELL="$(command -v bash)"
 
 # Homebrew
-export HOMEBREW_PREFIX=~/.brew
+export HOMEBREW_PREFIX="$HOME/.brew"
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
 . ~/.bashrc

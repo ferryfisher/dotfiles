@@ -1,3 +1,5 @@
+command = direct:$HOME/.nix-profile/bin/bash
+
 confirm-close-surface = false
 background-opacity = 0.8
 font-family = "JetBrains Mono"
