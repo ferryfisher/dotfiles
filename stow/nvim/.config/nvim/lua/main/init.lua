@@ -58,7 +58,7 @@ autocmd("FileType", {
     end,
 })
 
-autocmd("TextYankPost", {
+autocmd({ "TextPutPost", "TextYankPost" }, {
     group = group,
     callback = function()
         vim.hl.hl_op({ higroup = "IncSearch" })
