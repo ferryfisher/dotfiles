@@ -39,6 +39,7 @@ treefmt.withConfig {
         includes = [
           "*.md"
           "*.json"
+          "*.jsonc"
           "*.yaml"
           "*.yml"
         ];
