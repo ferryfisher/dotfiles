@@ -56,6 +56,7 @@ with pkgs;
 ]
 ++ lib.optionals isDarwin [
   lua5_5 # sketchybar lua
+  sbarlua # lua config for sketchybar
   sketchybar # macos menu bar
   sketchybar-app-font # sketchybar font
 ]
