@@ -1,11 +1,13 @@
 local home_dir = os.getenv("HOME")
-local sbar_path = home_dir .. "/.config/sketchybar/sketchybar_lua/"
 local build_path = home_dir .. "/.local/share/sketchybar_lua/"
+local sbarlua = home_dir .. "/.config/sketchybar/sketchybar_lua/"
+local sketchybar = sbarlua .. "sketchybar.so"
 
-local sketchybar = sbar_path .. "sketchybar.so"
+local lua_version = _VERSION:match("%d+%.%d+")
+local profile_sbarlua = home_dir .. "/.nix-profile/lib/lua/" .. lua_version .. "/"
 
 local function has_sketchybar()
-    return io.open(sketchybar)
+    return io.open(profile_sbarlua .. "sketchybar.so") or io.open(sketchybar)
 end
 
 if not has_sketchybar() then
@@ -24,8 +26,14 @@ if not has_sketchybar() then
     )
 end
 
--- Add the sketchybar module to the package cpath
-package.cpath = package.cpath .. ";" .. sbar_path .. "?.so"
+-- Add the sbarlua module to package.cpath
+
+package.cpath = package.cpath
+    .. ";"
+    .. table.concat({
+        profile_sbarlua .. "?.so",
+        sbarlua .. "?.so",
+    }, ";")
 
 sbar = require("sketchybar")
 sbar.exec("(cd helpers && make)")
