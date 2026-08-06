@@ -30,13 +30,6 @@ let
     );
 in
 {
-  packages = forAllSystems (pkgs: {
-    default = pkgs.buildEnv {
-      name = "user-packages";
-      paths = import ./packages.nix { inherit inputs pkgs; };
-    };
-  });
-
   checks = forAllSystems (pkgs: import ./checks { inherit inputs pkgs; });
 
   devShells = forAllSystems (pkgs: {
@@ -44,4 +37,11 @@ in
   });
 
   formatter = forAllSystems (pkgs: pkgs.callPackage ./formatter.nix { });
+
+  packages = forAllSystems (pkgs: {
+    default = pkgs.buildEnv {
+      name = "user-packages";
+      paths = import ./packages.nix { inherit inputs pkgs; };
+    };
+  });
 }
