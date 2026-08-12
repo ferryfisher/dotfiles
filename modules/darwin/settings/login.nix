@@ -6,10 +6,8 @@
     };
 
     loginwindow = {
-      autoLoginUser = null;
       GuestEnabled = false;
       DisableConsoleAccess = true;
-      SHOWFULLNAME = true;
     };
   };
 }
