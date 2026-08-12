@@ -1,7 +1,7 @@
 {
   "conform.nvim": {
     "branch": "master",
-    "commit": "619363c30309d29ffa631e67c8183f2a72caa373"
+    "commit": "016802de402556da54c36bd7359b441266b01cdd"
   },
   "fzf-lua": {
     "branch": "main",
@@ -9,7 +9,7 @@
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "31d6fb2d618bca1482b9f274751ead5f03461408"
+    "commit": "5be654f2232c10ddcad19c1607a67b6b4b78fc29"
   },
   "indentmini.nvim": {
     "branch": "main",
@@ -25,7 +25,7 @@
   },
   "nvim-treesitter": {
     "branch": "main",
-    "commit": "3d3321b560a63ff92a8692401f303a5123336b86"
+    "commit": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2"
   },
   "oil.nvim": {
     "branch": "master",
