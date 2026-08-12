@@ -66,7 +66,6 @@ o.lazyredraw = true
 o.linebreak = true
 o.number = true
 o.smoothscroll = true
-o.spell = true
 o.wrap = false
 -- }}}
 
