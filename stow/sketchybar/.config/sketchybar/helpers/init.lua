@@ -4,10 +4,10 @@ local sbarlua = home_dir .. "/.config/sketchybar/sketchybar_lua/"
 local sketchybar = sbarlua .. "sketchybar.so"
 
 local lua_version = _VERSION:match("%d+%.%d+")
-local profile_sbarlua = home_dir .. "/.nix-profile/lib/lua/" .. lua_version .. "/"
+local pkg_sbarlua = "/run/current-system/sw/lib/lua/" .. lua_version .. "/"
 
 local function has_sketchybar()
-    return io.open(profile_sbarlua .. "sketchybar.so") or io.open(sketchybar)
+    return io.open(pkg_sbarlua .. "sketchybar.so") or io.open(sketchybar)
 end
 
 if not has_sketchybar() then
@@ -31,7 +31,7 @@ end
 package.cpath = package.cpath
     .. ";"
     .. table.concat({
-        profile_sbarlua .. "?.so",
+        pkg_sbarlua .. "?.so",
         sbarlua .. "?.so",
     }, ";")
 

@@ -1,5 +1,5 @@
 background-opacity = 0.8
-command = shell:"$HOME/.nix-profile/bin/bash" -l
+command = shell:"/run/current-system/sw/bin/bash" -l
 confirm-close-surface = false
 font-family = "JetBrains Mono"
 font-feature = "-calt, -clig, -liga"

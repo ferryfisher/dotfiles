@@ -1,4 +1,0 @@
-[global]
-log_filter = "^$"
-log_format = "-"
-strict_env = true
