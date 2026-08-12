@@ -8,7 +8,7 @@
     defaults.NSGlobalDomain = {
       ApplePressAndHoldEnabled = false;
 
-      KeyRepeat = 2;
+      KeyRepeat = 3;
       InitialKeyRepeat = 15;
 
       "com.apple.keyboard.fnState" = true;
