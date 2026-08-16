@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
-  system.primaryUser = "ferry";
+  system.primaryUser = config.me.mainUser;
   system.stateVersion = lib.mkDefault 7;
 }

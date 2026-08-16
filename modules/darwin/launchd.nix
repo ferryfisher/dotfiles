@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  prefix = "sketchybar_${config.me.mainUser}";
+in
 {
   launchd.agents.sketchybar = {
     command = "${pkgs.sketchybar}/bin/sketchybar";
@@ -19,8 +22,8 @@
       RunAtLoad = true;
       KeepAlive = true;
 
-      StandardOutPath = "/tmp/sketchybar_ferry.out.log";
-      StandardErrorPath = "/tmp/sketchybar_ferry.error.log";
+      StandardOutPath = "/tmp/${prefix}.out.log";
+      StandardErrorPath = "/tmp/${prefix}.error.log";
     };
   };
 }

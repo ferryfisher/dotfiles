@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ config, inputs, ... }:
 
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
@@ -7,7 +7,7 @@
     enable = true;
     mutableTaps = false;
     package = inputs.homebrew;
-    user = "ferry";
+    user = config.me.mainUser;
 
     taps = {
       "homebrew/homebrew-cask" = inputs.homebrew-cask;

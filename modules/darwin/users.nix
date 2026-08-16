@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  mainUser = config.me.mainUser;
+in
 {
-  users.users.ferry = {
-    home = "/Users/ferry";
+  users.users.${mainUser} = {
+    home = "/Users/${mainUser}";
     shell = pkgs.bashInteractive;
   };
 }
