@@ -7,8 +7,9 @@ in
 {
   options.me = {
     mainUser = mkOption {
-      type = str;
       default = "ferry";
+      description = "Main user's username";
+      type = str;
     };
   };
 }
