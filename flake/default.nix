@@ -2,7 +2,6 @@ inputs:
 
 let
   inherit (inputs) nixpkgs self;
-  inherit (nixpkgs) lib;
 
   mkSystem = self.lib.mkSystem;
 
@@ -12,7 +11,8 @@ let
     "x86_64-linux"
   ];
 
-  forAllSystems = fn: lib.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
+  forAllSystems =
+    fn: nixpkgs.lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
 in
 {
   checks = forAllSystems (pkgs: import ./checks { inherit inputs pkgs; });
