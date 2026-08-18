@@ -6,7 +6,6 @@ let
     nixpkgs
     self
     ;
-  inherit (nixpkgs) lib;
 
   mkSystem =
     {
@@ -21,7 +20,7 @@ let
     }:
     let
       system = "${arch}-${platform}";
-      inputs' = lib.mapAttrs (_: lib.mapAttrs (_: v: v.${system} or v)) inputs;
+      inputs' = builtins.mapAttrs (_: builtins.mapAttrs (_: v: v.${system} or v)) inputs;
     in
     eval {
       specialArgs = {

@@ -39,7 +39,7 @@ in
       ;
   };
 
-  darwinConfigurations = lib.mapAttrs mkSystem.darwin {
+  darwinConfigurations = builtins.mapAttrs mkSystem.darwin {
     rho = { };
   };
 }
