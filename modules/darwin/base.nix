@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 {
   system.primaryUser = config.me.mainUser;
-  system.stateVersion = lib.mkDefault 7;
+  system.stateVersion = 7;
 }
