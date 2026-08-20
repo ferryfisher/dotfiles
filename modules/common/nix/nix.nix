@@ -9,9 +9,11 @@
         "nix-command"
       ];
 
+      accept-flake-config = false;
       auto-allocate-uids = true;
       auto-optimise-store = true;
       use-xdg-base-directories = true;
+      warn-dirty = false;
     };
   };
 
