@@ -21,7 +21,7 @@
     tree-sitter
     yazi
 
-    ### language tooling (disdain for project envs)
+    ### language/editor tooling
     asm-lsp
     cargo
     clang-tools

@@ -12,6 +12,7 @@ o.clipboard = "unnamed,unnamedplus"
 o.omnifunc = "syntaxcomplete#Complete"
 o.virtualedit = "block"
 o.autoread = true
+o.exrc = true
 o.modeline = false
 o.swapfile = false
 o.undofile = true
