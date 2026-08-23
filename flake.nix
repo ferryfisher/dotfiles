@@ -1,5 +1,5 @@
 {
-  description = "ferry nix packages";
+  description = "ferry nix config";
 
   outputs = inputs: import ./flake inputs;
 
