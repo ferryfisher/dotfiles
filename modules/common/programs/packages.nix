@@ -1,8 +1,4 @@
-{
-  inputs',
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -13,7 +9,6 @@
     git
     gnupg
     htop
-    inputs'.neovim-nightly-overlay.packages.neovim
     ripgrep
     starship
     stow
