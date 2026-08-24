@@ -1,10 +1,7 @@
 {
   imports = [
-    ./environment
-    ./settings
-    ./base.nix
-    ./homebrew.nix
-    ./launchd.nix
+    ./programs
+    ./system
     ./users.nix
   ];
 }
