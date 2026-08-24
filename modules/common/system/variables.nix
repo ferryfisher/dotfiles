@@ -7,6 +7,7 @@ in
   environment.variables = with preferences; {
     EDITOR = editor;
     MANPAGER = manpager;
+    SHELL = shell;
     TERMINAL = terminal;
   };
 }

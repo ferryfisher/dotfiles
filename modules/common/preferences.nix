@@ -21,6 +21,9 @@ in
   options.preferences = builtins.mapAttrs mkPreference {
     editor = { };
     manpager = { };
+    shell = {
+      default = "bash";
+    };
     terminal = {
       default = "ghostty";
     };
