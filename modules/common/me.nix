@@ -5,8 +5,8 @@ let
   inherit (lib.types) str;
 in
 {
-  options.me = {
-    mainUser = mkOption {
+  options.me = builtins.mapAttrs (_: mkOption) {
+    mainUser = {
       default = "ferry";
       description = "Main user's username";
       type = str;
