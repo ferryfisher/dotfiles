@@ -27,7 +27,7 @@ let
         inherit inputs inputs' self;
       };
 
-      modules = [
+      modules = self.lib.importModules [
         (self + "/hosts/${name}")
         (self + "/modules/common")
         (self + "/modules/${moduleSet}")

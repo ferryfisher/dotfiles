@@ -2,6 +2,7 @@ inputs:
 
 let
   inherit (inputs) nixpkgs self;
+  inherit (nixpkgs) lib;
   inherit (self.lib) mkSystem;
 
   systems = [
@@ -10,8 +11,7 @@ let
     "x86_64-linux"
   ];
 
-  forAllSystems =
-    fn: nixpkgs.lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
+  forAllSystems = fn: lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
 in
 {
   checks = forAllSystems (pkgs: import ./checks { inherit inputs pkgs; });
@@ -22,7 +22,7 @@ in
 
   formatter = forAllSystems (pkgs: pkgs.callPackage ./formatter.nix { });
 
-  lib = import ./lib { inherit inputs; };
+  lib = import ./lib { inherit inputs lib; };
 
   exportedSchemas = import ./schemas;
 
