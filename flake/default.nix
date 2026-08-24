@@ -2,8 +2,7 @@ inputs:
 
 let
   inherit (inputs) nixpkgs self;
-
-  mkSystem = self.lib.mkSystem;
+  inherit (self.lib) mkSystem;
 
   systems = [
     "aarch64-darwin"

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  mainUser = config.me.mainUser;
+  inherit (config.me) mainUser;
 in
 {
   users.users.${mainUser} = {
