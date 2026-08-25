@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     ### main
+    bat
     emacs
     fastfetch
     fzf
