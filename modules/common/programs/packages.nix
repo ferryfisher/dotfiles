@@ -10,6 +10,7 @@
     git
     gnupg
     htop
+    nix-output-monitor
     ripgrep
     starship
     stow
