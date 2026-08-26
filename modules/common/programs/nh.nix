@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.nh ];
-  environment.variables.NH_FLAKE = config.networking.hostName;
+  environment = {
+    systemPackages = [ pkgs.nh ];
+    variables.NH_FLAKE = config.networking.hostName;
+  };
 }
