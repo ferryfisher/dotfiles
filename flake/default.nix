@@ -14,7 +14,7 @@ let
   forAllSystems = fn: lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
 in
 {
-  checks = forAllSystems (pkgs: import ./checks { inherit inputs pkgs; });
+  checks = forAllSystems (pkgs: import ./checks { inherit pkgs self; });
 
   devShells = forAllSystems (pkgs: {
     default = pkgs.callPackage ./shell.nix { };
