@@ -20,11 +20,11 @@ in
     default = pkgs.callPackage ./shell.nix { };
   });
 
+  exportedSchemas = import ./schemas;
+
   formatter = forAllSystems (pkgs: pkgs.callPackage ./formatter.nix { });
 
   lib = import ./lib { inherit inputs lib; };
-
-  exportedSchemas = import ./schemas;
 
   schemas = self.exportedSchemas // {
     inherit (inputs.flake-schemas.exportedSchemas)
