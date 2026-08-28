@@ -1,7 +1,7 @@
 {
   description = "ferry nix config";
 
-  outputs = inputs: import ./flake inputs;
+  outputs = inputs: import ./. inputs;
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";

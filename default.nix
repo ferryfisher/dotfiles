@@ -14,15 +14,15 @@ let
   forAllSystems = fn: lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
 in
 {
-  checks = forAllSystems (pkgs: import ./checks { inherit pkgs self; });
+  checks = forAllSystems (pkgs: import ./flake/checks { inherit pkgs self; });
 
   devShells = forAllSystems (pkgs: {
     default = pkgs.callPackage ./shell.nix { };
   });
 
-  exportedSchemas = import ./schemas;
+  exportedSchemas = import ./flake/schemas;
 
-  formatter = forAllSystems (pkgs: pkgs.callPackage ./formatter.nix { });
+  formatter = forAllSystems (pkgs: pkgs.callPackage ./flake/formatter.nix { });
 
   lib = import ./lib { inherit inputs lib; };
 
