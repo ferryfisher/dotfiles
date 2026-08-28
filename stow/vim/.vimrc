@@ -66,5 +66,3 @@ nnoremap <c-l> <c-w>l
 if executable("rg")
    set grepprg=rg\ --vimgrep
 endif
-
-call plug#begin('~/vim/plugged')
