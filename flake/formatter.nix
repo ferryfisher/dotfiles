@@ -7,7 +7,10 @@ treefmt.withConfig {
     tree-root-file = "flake.nix";
 
     excludes = [
+      "stow/*"
+      "LICENSE"
       ".gitignore"
+      ".gitmodules"
       "*.lock"
     ];
 
