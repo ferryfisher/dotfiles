@@ -1,0 +1,64 @@
+{
+  "darwin": {
+    "type": "github",
+    "owner": "nix-darwin",
+    "repo": "nix-darwin",
+    "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
+    "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
+    "lastModified": 1786845137
+  },
+  "flake-schemas": {
+    "type": "github",
+    "owner": "ferryfisher",
+    "repo": "flake-schemas",
+    "rev": "6cc9bd98891b1fc6bb2b8cb3277df8bc72799ca6",
+    "narHash": "sha256-HiRPtA0spK+Dkgbhz/1zW9glXxNVB+L4Rj2VYmdawb8=",
+    "lastModified": 1780327564
+  },
+  "homebrew": {
+    "type": "github",
+    "owner": "Homebrew",
+    "repo": "brew",
+    "rev": "4dacfe77a24dead72de749c0876028b77b99cd04",
+    "narHash": "sha256-QvFAWalqDF9eeYOct8M8YEI2+xXgxvxiJ72I0gnn60w=",
+    "lastModified": 1786450006
+  },
+  "homebrew-cask": {
+    "type": "github",
+    "owner": "Homebrew",
+    "repo": "homebrew-cask",
+    "rev": "b8fadeeaa920a1234e4e1d6fff9001260b225496",
+    "narHash": "sha256-bPPVc64aedPprPFfc0FbG5rF7kDXO8k4ENkGHR7sWDQ=",
+    "lastModified": 1786629571
+  },
+  "homebrew-core": {
+    "type": "github",
+    "owner": "Homebrew",
+    "repo": "homebrew-core",
+    "rev": "3c8cb71469a83df3cedf38c570160001c08af138",
+    "narHash": "sha256-ALCeFf9wWZHqHPw6lQFAoF4FkyBNY12KvC3IWRVDM64=",
+    "lastModified": 1786627531
+  },
+  "neovim-nightly-overlay": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "neovim-nightly-overlay",
+    "rev": "c37783670b7abbbbb72aea784e756498bf28fd60",
+    "narHash": "sha256-MYxAwD5y4ARgdlTzMdhM0+zEgKT7eK8/On64NPo/nx4=",
+    "lastModified": 1787961775
+  },
+  "nix-homebrew": {
+    "type": "github",
+    "owner": "zhaofengli",
+    "repo": "nix-homebrew",
+    "rev": "b00218e4aec0e5bf07d61a0bb13f842faa582d7b",
+    "narHash": "sha256-LslMncqN7uOOH5S88WZtO/EVt2HwD8ltUnfyANk+mC0=",
+    "lastModified": 1787330919
+  },
+  "nixpkgs": {
+    "type": "tarball",
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1062790.c27cdad491a9/nixexprs.tar.zst",
+    "rev": "c27cdad491a991b11ed731760aa2ef8db0cb0410",
+    "narHash": "sha256-4Opnii0iGg8Dk8/rZ2IYh/HCHvg1B+Us5+Qg+Qy5c18="
+  }
+}

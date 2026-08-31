@@ -1,0 +1,32 @@
+[all_follow]
+nixpkgs = "nixpkgs"
+
+[inputs.nixpkgs]
+url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
+
+[inputs.darwin]
+url = "github:nix-darwin/nix-darwin"
+
+# https://github.com/NixOS/nix/pull/8892
+[inputs.flake-schemas]
+url = "github:ferryfisher/flake-schemas"
+
+[inputs.neovim-nightly-overlay]
+url = "github:nix-community/neovim-nightly-overlay"
+
+[inputs.nix-homebrew]
+url = "github:zhaofengli/nix-homebrew"
+follows = { brew-src = "homebrew" }
+
+# These are manually pinned to decouple, update the <rev-or-ref> manually.
+[inputs.homebrew]
+url = "github:Homebrew/brew/6.0.17"
+type = "fetch"
+
+[inputs.homebrew-cask]
+url = "github:Homebrew/homebrew-cask/b8fadeeaa920a1234e4e1d6fff9001260b225496"
+type = "fetch"
+
+[inputs.homebrew-core]
+url = "github:Homebrew/homebrew-core/3c8cb71469a83df3cedf38c570160001c08af138"
+type = "fetch"
