@@ -1,5 +1,5 @@
 { pkgs, self }:
 
 {
-  format = pkgs.callPackage ./format.nix { inherit self; };
+  fmt = pkgs.callPackage ./fmt.nix { inherit self; };
 }

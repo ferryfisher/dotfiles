@@ -6,7 +6,7 @@
   stdenv,
 }:
 
-runCommandLocal "format-check"
+runCommandLocal "fmt-check"
   {
     __structuredAttrs = true;
     strictDeps = true;
