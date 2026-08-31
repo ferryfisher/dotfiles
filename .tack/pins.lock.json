@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "neovim-nightly-overlay",
-    "rev": "c37783670b7abbbbb72aea784e756498bf28fd60",
-    "narHash": "sha256-MYxAwD5y4ARgdlTzMdhM0+zEgKT7eK8/On64NPo/nx4=",
-    "lastModified": 1787961775
+    "rev": "6ae36a8e30c31233b8f722f341436c1c5c4be7b4",
+    "narHash": "sha256-kGHPsQCTNb/c+LfjvqSPQwOIejBGM843MFry5daI7cM=",
+    "lastModified": 1788159151
   },
   "nix-homebrew": {
     "type": "github",
@@ -57,8 +57,8 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1062790.c27cdad491a9/nixexprs.tar.zst",
-    "rev": "c27cdad491a991b11ed731760aa2ef8db0cb0410",
-    "narHash": "sha256-4Opnii0iGg8Dk8/rZ2IYh/HCHvg1B+Us5+Qg+Qy5c18="
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1063758.e8be7818e19a/nixexprs.tar.zst",
+    "rev": "e8be7818e19ada32105a8af937a6a473b38167ca",
+    "narHash": "sha256-qeiZaY+0tpZXliRA9odCNx+sOfIOhnkcUq9t+ctPrRA="
   }
 }
