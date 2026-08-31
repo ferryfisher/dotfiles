@@ -3,11 +3,10 @@
 treefmt.withConfig {
   settings = {
     allow-missing-formatter = false;
-    on-unmatched = "warn";
+    on-unmatched = "info";
     tree-root-file = "flake.nix";
 
     excludes = [
-      "stow/*"
       "LICENSE"
       ".gitignore"
       ".gitmodules"
