@@ -16,6 +16,7 @@ local parsers = {
     "ocaml",
     "python",
     "rust",
+    "sh",
     "query",
     "toml",
     "yaml",
