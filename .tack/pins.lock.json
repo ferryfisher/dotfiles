@@ -43,9 +43,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "neovim-nightly-overlay",
-    "rev": "6ae36a8e30c31233b8f722f341436c1c5c4be7b4",
-    "narHash": "sha256-kGHPsQCTNb/c+LfjvqSPQwOIejBGM843MFry5daI7cM=",
-    "lastModified": 1788159151
+    "rev": "a1dd2c16a9639cf6e1be4f94b4486d3d8a316e98",
+    "narHash": "sha256-+DMUBg/k3OE5+wtTL5xoLfoYI6ji1Tz3M50alQbUfM0=",
+    "lastModified": 1788225886
   },
   "nix-homebrew": {
     "type": "github",
