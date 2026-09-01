@@ -1,11 +1,9 @@
-{ inputs', ... }:
+{ inputs, pkgs, ... }:
 
 {
-  environment = {
-    systemPackages = [
-      inputs'.neovim-nightly-overlay.packages.neovim
-    ];
-  };
+  environment.systemPackages = [
+    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim
+  ];
 
   preferences = {
     editor = "nvim";

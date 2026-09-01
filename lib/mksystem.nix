@@ -18,13 +18,9 @@ let
     {
       arch ? defaultArch,
     }:
-    let
-      system = "${arch}-${platform}";
-      inputs' = builtins.mapAttrs (_: builtins.mapAttrs (_: v: v.${system} or v)) inputs;
-    in
     eval {
       specialArgs = {
-        inherit inputs inputs' self;
+        inherit inputs self;
       };
 
       modules = self.lib.importModules [
@@ -32,7 +28,7 @@ let
         (self + "/modules/common")
         (self + "/modules/${moduleSet}")
         {
-          nixpkgs.hostPlatform = system;
+          nixpkgs.hostPlatform = arch + "-" + platform;
           networking.hostName = name;
         }
       ];
