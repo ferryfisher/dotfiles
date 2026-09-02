@@ -11,13 +11,10 @@ do
     -- Create a buffer to reuse for options.
     local nbuffer = { noremap = true, silent = true, desc = nil }
 
-    --[=[
-    Maps @key to @mapped with @desc as the desc field.
-
-    @param key string
-    @param mapped string
-    @param desc string?
-    ]=]
+    --- Maps `key` to `mapped` with `desc` as the description.
+    --- @param key string
+    --- @param mapped string|function
+    --- @param desc? string
     nmap = function(key, mapped, desc)
         nbuffer.desc = desc
 
@@ -25,11 +22,8 @@ do
     end
 end
 
---[=[
- Removes boilerplate for command mappings.
-
- @param command string
---]=]
+--- Removes boilerplate for command mappings.
+--- @param command string
 local function cmd(command)
     return "<cmd>" .. command .. "<cr>"
 end
