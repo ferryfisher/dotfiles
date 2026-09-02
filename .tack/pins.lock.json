@@ -39,13 +39,13 @@
     "narHash": "sha256-ALCeFf9wWZHqHPw6lQFAoF4FkyBNY12KvC3IWRVDM64=",
     "lastModified": 1786627531
   },
-  "neovim-nightly-overlay": {
+  "neovim": {
     "type": "github",
-    "owner": "nix-community",
-    "repo": "neovim-nightly-overlay",
-    "rev": "a1dd2c16a9639cf6e1be4f94b4486d3d8a316e98",
-    "narHash": "sha256-+DMUBg/k3OE5+wtTL5xoLfoYI6ji1Tz3M50alQbUfM0=",
-    "lastModified": 1788225886
+    "owner": "neovim",
+    "repo": "neovim",
+    "rev": "d42367570cfdcfabf51f8f8f69b63870a43c3088",
+    "narHash": "sha256-Xg4mvhQSbXoOut0O+AHQDb2DooO5DKlcxJYajHHBnbE=",
+    "lastModified": 1788318362
   },
   "nix-homebrew": {
     "type": "github",

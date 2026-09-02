@@ -2,7 +2,10 @@
 
 {
   environment.systemPackages = [
-    inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim
+    (pkgs.neovim-unwrapped.overrideAttrs {
+      doInstallCheck = false;
+      src = inputs.neovim;
+    })
   ];
 
   preferences = {
