@@ -29,7 +29,6 @@ return {
             { "<leader>f", group = "FzfLua" },
             { "<leader>g", group = "Git" },
             { "<leader>l", group = "LSP" },
-            { "<leader>r", group = "Replua" },
         },
     },
 }
