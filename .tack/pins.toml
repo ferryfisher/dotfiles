@@ -12,7 +12,7 @@ url = "github:nix-darwin/nix-darwin"
 url = "github:ferryfisher/flake-schemas"
 
 [inputs.neovim]
-url = "github:neovim/neovim"
+url = "github:neovim/neovim/nightly"
 type = "fetch"
 
 [inputs.nix-homebrew]
