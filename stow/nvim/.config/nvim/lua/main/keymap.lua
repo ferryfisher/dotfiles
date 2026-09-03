@@ -1,10 +1,10 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local keymap = vim.keymap.set
-
+local api = vim.api
+local autocmd = api.nvim_create_autocmd
+local augroup = api.nvim_create_augroup
 local diagnostic = vim.diagnostic
 local lsp = vim.lsp
 local buf = lsp.buf
+local keymap = vim.keymap.set
 
 local nmap
 do
@@ -67,6 +67,11 @@ nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 nmap("<A-]>", cmd("vertical resize -5"))
 nmap("<A-[>", cmd("vertical resize +5"))
+
+-- Multicursors
+nmap("<leader>mc", function()
+    api.nvim_buf_clear_namespace(0, api.nvim_create_namespace("nvim.multicursor"), 0, -1)
+end, "Multicursors clear")
 
 -- Hybrid mode
 do
