@@ -57,8 +57,8 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1063758.e8be7818e19a/nixexprs.tar.zst",
-    "rev": "e8be7818e19ada32105a8af937a6a473b38167ca",
-    "narHash": "sha256-qeiZaY+0tpZXliRA9odCNx+sOfIOhnkcUq9t+ctPrRA="
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1065681.f0e996ff59c7/nixexprs.tar.zst",
+    "rev": "f0e996ff59c7624eba9db8972e8f1623a69d3b83",
+    "narHash": "sha256-AmHwB5eQop71skj94AUgGuqqZkxp1V1yDmxUjf36UkM="
   }
 }
