@@ -24,8 +24,8 @@ local hotkeys = {
     { {}, "k", nil, actions.focus_up },
     { {}, "l", nil, actions.focus_right },
 
-    { { "shift" }, "N", nil, actions.focus_prev },
     { {}, "n", nil, actions.focus_next },
+    { { "shift" }, "N", nil, actions.focus_prev },
 
     { { "shift" }, "H", nil, actions.swap_left },
     { { "shift" }, "J", nil, actions.swap_down },
@@ -44,6 +44,7 @@ local hotkeys = {
     { {}, "o", nil, actions.barf_out },
 
     { {}, "s", nil, actions.split_screen },
+    { { "shift" }, "S", nil, actions.toggle_stack },
 
     { {}, "q", nil, actions.toggle_floating },
     { { "shift" }, "F", nil, actions.focus_floating },
