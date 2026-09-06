@@ -14,6 +14,10 @@ let
   forAllSystems = fn: lib.attrsets.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
 in
 {
+  darwinConfigurations = builtins.mapAttrs mkSystem.darwin {
+    rho = { };
+  };
+
   checks = forAllSystems (pkgs: import ./flake/checks { inherit pkgs self; });
 
   devShells = forAllSystems (pkgs: {
@@ -36,9 +40,5 @@ in
       nixosConfigurations
       schemas
       ;
-  };
-
-  darwinConfigurations = builtins.mapAttrs mkSystem.darwin {
-    rho = { };
   };
 }
