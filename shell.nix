@@ -5,7 +5,6 @@ mkShellNoCC {
 
   packages = with pkgs; [
     git
-    sops
     stow
   ];
 }
