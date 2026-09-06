@@ -16,7 +16,6 @@ in
 
   launchd.agents.sketchybar = {
     command = "${pkgs.sketchybar}/bin/sketchybar";
-
     path = with pkgs; [
       lua5_5
       "/run/current-system/sw/bin"
@@ -28,12 +27,10 @@ in
 
     serviceConfig = {
       Label = "org.nix.sketchybar";
-
+      StandardErrorPath = "/tmp/${prefix}.error.log";
+      StandardOutPath = "/tmp/${prefix}.out.log";
       RunAtLoad = true;
       KeepAlive = true;
-
-      StandardOutPath = "/tmp/${prefix}.out.log";
-      StandardErrorPath = "/tmp/${prefix}.error.log";
     };
   };
 }

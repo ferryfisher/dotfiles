@@ -15,7 +15,7 @@ in
       src = inputs.neovim;
       version = rev;
 
-      postPatch = /* bash */ ''
+      postPatch = ''
         ${oldAttrs.postPatch or ""}
 
         substituteInPlace cmake.config/versiondef.h.in --replace-fail \
