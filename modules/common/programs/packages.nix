@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     ### main
     bat
-    emacs
     fastfetch
     fzf
     git
@@ -34,14 +33,5 @@
     rustfmt
     rust-analyzer
     stylua
-
-    ### misc
-    (aspellWithDicts (
-      dicts: with dicts; [
-        en
-        en-computers
-        en-science
-      ]
-    )) # for emacs
   ];
 }
