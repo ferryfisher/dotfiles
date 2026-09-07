@@ -77,15 +77,12 @@ return {
 
     opts = {
         { "max-perf", "ivy" },
-
         files = { cwd_prompt_shorten_len = 96 },
-
         winopts = {
             backdrop = 100,
             height = 0.4,
             preview = { vertical = "right:50%", default = "builtin" },
         },
-
         lsp = { symbols = { symbol_style = 3 } },
     },
 }

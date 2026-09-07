@@ -42,7 +42,6 @@ return {
     opts = {
         delete_to_trash = true,
         watch_for_changes = true,
-
         columns = {
             {
                 "type",
@@ -76,7 +75,6 @@ return {
             { "size", align = "right", highlight = "Number" },
             { "mtime", highlight = "String" },
         },
-
         keymaps = {
             ["<M-s>"] = { "actions.select", opts = { horizontal = true } },
             ["<M-v>"] = { "actions.select", opts = { vertical = true } },
@@ -86,7 +84,6 @@ return {
             ["<C-l>"] = false,
             ["<C-s>"] = false,
         },
-
         view_options = {
             show_hidden = true,
             is_always_hidden = function(name)

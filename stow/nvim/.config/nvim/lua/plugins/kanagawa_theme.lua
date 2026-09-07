@@ -4,21 +4,12 @@ return {
     "rebelot/kanagawa.nvim",
 
     opts = {
+        colors = { theme = { all = { ui = { bg_gutter = "NONE" } } } },
         commentStyle = italic,
         keywordStyle = italic,
         statementStyle = { bold = false },
         transparent = true,
         terminalcolors = true,
-
-        colors = {
-            theme = {
-                all = {
-                    ui = {
-                        bg_gutter = "NONE",
-                    },
-                },
-            },
-        },
 
         overrides = function(colors)
             local c = require("kanagawa.lib.color")

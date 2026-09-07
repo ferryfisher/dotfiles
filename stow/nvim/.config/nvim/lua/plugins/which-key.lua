@@ -4,7 +4,6 @@ return {
 
     opts = {
         delay = 400, -- ms
-
         icons = {
             mappings = false,
 
@@ -24,7 +23,6 @@ return {
                 Space = "SPC ",
             },
         },
-
         spec = {
             { "<leader>f", group = "FzfLua" },
             { "<leader>g", group = "Git" },

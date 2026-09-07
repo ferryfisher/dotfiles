@@ -11,11 +11,7 @@ return {
     },
 
     opts = {
-        format_on_save = {
-            lsp_format = "fallback",
-            timeout_ms = 500,
-        },
-
+        default_format_opts = { lsp_format = "fallback" },
         formatters_by_ft = {
             c = { "clang-format" },
             cpp = { "clang-format" },
@@ -34,9 +30,9 @@ return {
             typescript = { "prettier" },
             yaml = { "prettier" },
         },
-
-        default_format_opts = {
+        format_on_save = {
             lsp_format = "fallback",
+            timeout_ms = 500,
         },
     },
 }
