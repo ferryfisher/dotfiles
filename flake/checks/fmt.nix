@@ -18,28 +18,26 @@ runCommandLocal "fmt-check"
   ''
     set -euo pipefail
 
-    export HOME="$TMPDIR/home"
-    mkdir -p "$HOME"
+    export GIT_CONFIG_GLOBAL=/dev/null
+    export GIT_CONFIG_SYSTEM=/dev/null
+    export GIT_ATTR_NOSYSTEM=1
 
-    git config --global user.name Nix
-    git config --global user.email nix@localhost
-    git config --global init.defaultBranch main
-
-    worktree="$TMPDIR/project"
-    cp -r "${self}" "$worktree"
+    worktree="$TMPDIR/src"
+    cp -R "${self}/." "$worktree"
     chmod -R u+w "$worktree"
     cd "$worktree"
 
-    git init --quiet
+    git init -q
+    git config user.name Nix
+    git config user.email nix@localhost
     git add -A
-    git commit -m init --quiet
+    git commit -qm init
 
-    treefmt --version 
+    treefmt --version
     printf ' '
     treefmt --no-cache
 
-    git status --short
-    git --no-pager diff --exit-code
+    git diff --exit-code
 
     touch "$out"
   ''
