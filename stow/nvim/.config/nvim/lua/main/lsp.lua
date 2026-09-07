@@ -1,7 +1,7 @@
 local api = vim.api
-local lsp = vim.lsp
 local autocmd = api.nvim_create_autocmd
 local group = api.nvim_create_augroup("ferry.lsp", { clear = true })
+local lsp = vim.lsp
 
 autocmd("LspAttach", {
     group = group,
@@ -51,7 +51,9 @@ autocmd("LspAttach", {
     end,
 })
 
-vim.lsp.enable({
+lsp.log.set_level(vim.log.levels.OFF)
+
+lsp.enable({
     "asm-lsp",
     "clangd",
     "lua_ls",
