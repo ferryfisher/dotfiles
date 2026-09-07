@@ -1,6 +1,5 @@
 {
   git,
-  git-lfs,
   runCommandLocal,
   self,
   stdenv,
@@ -13,7 +12,6 @@ runCommandLocal "fmt-check"
 
     nativeBuildInputs = [
       git
-      git-lfs
       self.formatter.${stdenv.hostPlatform.system}
     ];
   }
