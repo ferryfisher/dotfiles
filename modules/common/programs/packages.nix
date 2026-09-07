@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ### main
+    # main
     bat
     fastfetch
     fzf
@@ -17,7 +17,7 @@
     tree-sitter
     yazi
 
-    ### language/editor tooling
+    # language/editor tooling
     asm-lsp
     cargo
     clang-tools
