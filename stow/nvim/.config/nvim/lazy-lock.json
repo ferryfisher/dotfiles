@@ -25,7 +25,7 @@
   },
   "nvim-treesitter": {
     "branch": "main",
-    "commit": "d4d59cb369da46b95699bd2200efbcffc6dadb3b"
+    "commit": "de9f0f3dbdab1952f136dc7bd67ff3bafdf994da"
   },
   "oil.nvim": {
     "branch": "master",
