@@ -14,14 +14,6 @@ treefmt.withConfig {
     ];
 
     formatter = {
-      beautysh = {
-        command = "beautysh";
-        includes = [
-          "*.sh"
-          "*.bash"
-        ];
-      };
-
       deadnix = {
         command = "deadnix";
         options = [ "--edit" ];
@@ -49,6 +41,21 @@ treefmt.withConfig {
 
       shellcheck = {
         command = "shellcheck";
+        includes = [
+          "*.sh"
+          "*.bash"
+        ];
+      };
+
+      shfmt = {
+        command = "shfmt";
+        options = [
+          "-w"
+          "-i"
+          "2"
+          "-ci"
+          "-bn"
+        ];
         includes = [
           "*.sh"
           "*.bash"
@@ -91,11 +98,11 @@ treefmt.withConfig {
   };
 
   runtimeInputs = with pkgs; [
-    beautysh
     deadnix
     nixfmt
     prettier
     shellcheck
+    shfmt
     statix
     stylua
     taplo
