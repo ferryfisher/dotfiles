@@ -33,7 +33,7 @@ o.ttimeoutlen = 5
 
 -- Indent {{{
 o.softtabstop = -1
-o.shiftwidth = 4
+o.shiftwidth = 2
 o.autoindent = true
 o.expandtab = true
 o.smarttab = true
