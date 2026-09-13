@@ -37,24 +37,24 @@ autocmd("FileType", {
   pattern = parsers,
   group = group,
   callback = function(opts)
-    local lang = vim.treesitter.language.get_lang(vim.bo[opts.buf].filetype)
+    local ts = vim.treesitter
+    local lang = ts.language.get_lang(vim.bo[opts.buf].filetype)
 
     if not lang then
       return
     end
 
-    if not vim.treesitter.language.add(lang) then
-      require("nvim-treesitter").install(lang, { summary = true })
-    end
+    local wo = vim.wo[opts.win]
+    wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    wo.foldmethod = "expr"
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
-    if vim.treesitter.language.add(lang) then
-      vim.treesitter.start(opts.buf, lang)
-
-      local wo = vim.wo[0][0]
-      wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-      wo.foldmethod = "expr"
-
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    if ts.language.add(lang) then
+      ts.start(opts.buf, lang)
+    else
+      require("nvim-treesitter").install(lang, { summary = true }):await(function()
+        ts.start(opts.buf, lang)
+      end)
     end
   end,
 })
