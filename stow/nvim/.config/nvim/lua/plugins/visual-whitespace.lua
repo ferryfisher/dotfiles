@@ -1,10 +1,10 @@
 return {
-    "mcauley-penney/visual-whitespace.nvim",
-    event = "BufReadPre",
+  "mcauley-penney/visual-whitespace.nvim",
+  event = "BufReadPre",
 
-    opts = {
-        nbsp = "+",
-        space = "·",
-        tab = "»",
-    },
+  opts = {
+    nbsp = "+",
+    space = "·",
+    tab = "»",
+  },
 }

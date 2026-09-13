@@ -1,7 +1,7 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-    event = "BufReadPre",
-    opts = {},
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  build = ":TSUpdate",
+  event = "BufReadPre",
+  opts = {},
 }

@@ -1,94 +1,94 @@
 local permissions_hlgroup = {
-    ["-"] = "NonText",
-    ["r"] = "DiagnosticHint",
-    ["w"] = "DiagnosticWarn",
-    ["x"] = "DiagnosticError",
-    ["s"] = "DiagnosticInfo",
+  ["-"] = "NonText",
+  ["r"] = "DiagnosticHint",
+  ["w"] = "DiagnosticWarn",
+  ["x"] = "DiagnosticError",
+  ["s"] = "DiagnosticInfo",
 }
 
 local type_hlgroup = {
-    ["-"] = "NonText",
-    ["d"] = "Directory",
-    ["l"] = "Special",
-    ["p"] = "Conceal",
-    ["s"] = "Underlined",
+  ["-"] = "NonText",
+  ["d"] = "Directory",
+  ["l"] = "Special",
+  ["p"] = "Conceal",
+  ["s"] = "Underlined",
 }
 
 return {
-    "stevearc/oil.nvim",
+  "stevearc/oil.nvim",
 
-    init = function()
-        local api = vim.api
-        api.nvim_create_autocmd("BufEnter", {
-            group = api.nvim_create_augroup("plugins.oil", { clear = true }),
-            pattern = "oil://*",
-            callback = function()
-                require("oil.actions").cd.callback({
-                    scope = "win",
-                    silent = true,
-                })
-            end,
+  init = function()
+    local api = vim.api
+    api.nvim_create_autocmd("BufEnter", {
+      group = api.nvim_create_augroup("plugins.oil", { clear = true }),
+      pattern = "oil://*",
+      callback = function()
+        require("oil.actions").cd.callback({
+          scope = "win",
+          silent = true,
         })
-    end,
+      end,
+    })
+  end,
 
-    keys = {
-        {
-            "-",
-            "<cmd>Oil<cr>",
-            desc = "Oil parent directory",
-        },
+  keys = {
+    {
+      "-",
+      "<cmd>Oil<cr>",
+      desc = "Oil parent directory",
     },
+  },
 
-    opts = {
-        delete_to_trash = true,
-        watch_for_changes = true,
-        columns = {
-            {
-                "type",
-                icons = {
-                    directory = "d",
-                    fifo = "p",
-                    file = "-",
-                    link = "l",
-                    socket = "s",
-                },
-                highlight = function(string)
-                    return type_hlgroup[string] or type_hlgroup["-"]
-                end,
-            },
-            {
-                "permissions",
-                highlight = function(string)
-                    local hl = {}
+  opts = {
+    delete_to_trash = true,
+    watch_for_changes = true,
+    columns = {
+      {
+        "type",
+        icons = {
+          directory = "d",
+          fifo = "p",
+          file = "-",
+          link = "l",
+          socket = "s",
+        },
+        highlight = function(string)
+          return type_hlgroup[string] or type_hlgroup["-"]
+        end,
+      },
+      {
+        "permissions",
+        highlight = function(string)
+          local hl = {}
 
-                    for i = 1, #string do
-                        table.insert(hl, {
-                            permissions_hlgroup[string:sub(i, i)],
-                            i - 1,
-                            i,
-                        })
-                    end
+          for i = 1, #string do
+            table.insert(hl, {
+              permissions_hlgroup[string:sub(i, i)],
+              i - 1,
+              i,
+            })
+          end
 
-                    return hl or permissions_hlgroup["-"]
-                end,
-            },
-            { "size", align = "right", highlight = "Number" },
-            { "mtime", highlight = "String" },
-        },
-        keymaps = {
-            ["<M-s>"] = { "actions.select", opts = { horizontal = true } },
-            ["<M-v>"] = { "actions.select", opts = { vertical = true } },
-            ["<C-h>"] = false,
-            ["<C-j>"] = false,
-            ["<C-k>"] = false,
-            ["<C-l>"] = false,
-            ["<C-s>"] = false,
-        },
-        view_options = {
-            show_hidden = true,
-            is_always_hidden = function(name)
-                return name == ".."
-            end,
-        },
+          return hl or permissions_hlgroup["-"]
+        end,
+      },
+      { "size", align = "right", highlight = "Number" },
+      { "mtime", highlight = "String" },
     },
+    keymaps = {
+      ["<M-s>"] = { "actions.select", opts = { horizontal = true } },
+      ["<M-v>"] = { "actions.select", opts = { vertical = true } },
+      ["<C-h>"] = false,
+      ["<C-j>"] = false,
+      ["<C-k>"] = false,
+      ["<C-l>"] = false,
+      ["<C-s>"] = false,
+    },
+    view_options = {
+      show_hidden = true,
+      is_always_hidden = function(name)
+        return name == ".."
+      end,
+    },
+  },
 }

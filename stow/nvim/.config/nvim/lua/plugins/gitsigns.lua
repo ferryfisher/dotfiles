@@ -1,19 +1,19 @@
 return {
-    "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
+  "lewis6991/gitsigns.nvim",
+  event = "BufReadPre",
 
-    keys = {
-        {
-            "<leader>g[",
-            "<cmd>Gitsigns prev_hunk<cr>",
-            desc = "Gitsigns prev_hunk",
-        },
-        {
-            "<leader>g]",
-            "<cmd>Gitsigns next_hunk<cr>",
-            desc = "Gitsigns next_hunk",
-        },
+  keys = {
+    {
+      "<leader>g[",
+      "<cmd>Gitsigns prev_hunk<cr>",
+      desc = "Gitsigns prev_hunk",
     },
+    {
+      "<leader>g]",
+      "<cmd>Gitsigns next_hunk<cr>",
+      desc = "Gitsigns next_hunk",
+    },
+  },
 
-    opts = {},
+  opts = {},
 }

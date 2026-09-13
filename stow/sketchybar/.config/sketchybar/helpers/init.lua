@@ -7,12 +7,12 @@ local lua_version = _VERSION:match("%d+%.%d+")
 local pkg_sbarlua = "/run/current-system/sw/lib/lua/" .. lua_version .. "/"
 
 local function has_sketchybar()
-    return io.open(pkg_sbarlua .. "sketchybar.so") or io.open(sketchybar)
+  return io.open(pkg_sbarlua .. "sketchybar.so") or io.open(sketchybar)
 end
 
 if not has_sketchybar() then
-    os.execute(
-        [[
+  os.execute(
+    [[
         set -e
 
         git clone https://github.com/FelixKratz/SbarLua /tmp/SbarLua
@@ -20,20 +20,20 @@ if not has_sketchybar() then
         make install
         rm -rf /tmp/SbarLua/
         ]]
-            .. string.format('mv "%s" "%s"', build_path .. "sketchybar.so", sketchybar)
-            .. "\n"
-            .. string.format('rm -rf "%s"', build_path)
-    )
+      .. string.format('mv "%s" "%s"', build_path .. "sketchybar.so", sketchybar)
+      .. "\n"
+      .. string.format('rm -rf "%s"', build_path)
+  )
 end
 
 -- Add the sbarlua module to package.cpath
 
 package.cpath = package.cpath
-    .. ";"
-    .. table.concat({
-        pkg_sbarlua .. "?.so",
-        sbarlua .. "?.so",
-    }, ";")
+  .. ";"
+  .. table.concat({
+    pkg_sbarlua .. "?.so",
+    sbarlua .. "?.so",
+  }, ";")
 
 sbar = require("sketchybar")
 sbar.exec("(cd helpers && make)")
