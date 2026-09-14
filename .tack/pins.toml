@@ -7,10 +7,6 @@ url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
 [inputs.darwin]
 url = "github:nix-darwin/nix-darwin"
 
-# https://github.com/NixOS/nix/pull/8892
-[inputs.flake-schemas]
-url = "github:ferryfisher/flake-schemas"
-
 [inputs.neovim]
 url = "github:neovim/neovim/nightly"
 type = "fetch"

@@ -24,21 +24,7 @@ in
     default = pkgs.callPackage ./shell.nix { };
   });
 
-  exportedSchemas = import ./flake/schemas;
-
   formatter = forAllSystems (pkgs: pkgs.callPackage ./flake/formatter.nix { });
 
   lib = import ./lib { inherit inputs lib; };
-
-  schemas = self.exportedSchemas // {
-    inherit (inputs.flake-schemas.exportedSchemas)
-      checks
-      darwinConfigurations
-      devShells
-      exportedSchemas
-      formatter
-      nixosConfigurations
-      schemas
-      ;
-  };
 }

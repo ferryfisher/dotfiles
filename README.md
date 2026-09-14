@@ -14,9 +14,6 @@
 
 dotfiles managed via [GNU Stow](https://www.gnu.org/software/stow/).
 
-> [!warning]
-> The schemas flake output currently only works with [Determinate Nix](https://github.com/DeterminateSystems/nix-installer)
-
 ## Formatting
 
 `nix fmt` formats the repository and `nix flake check` runs flake tests
