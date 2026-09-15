@@ -1,5 +1,12 @@
 { config, inputs, ... }:
 
+let
+  homebrewEnv = {
+    HOMEBREW_NO_ANALYTICS = "1";
+    HOMEBREW_NO_ENV_HINTS = "1";
+    HOMEBREW_NO_INSECURE_REDIRECT = "1";
+  };
+in
 {
   imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
@@ -26,12 +33,7 @@
     onActivation = {
       cleanup = "zap";
       upgrade = true;
-
-      extraEnv = {
-        HOMEBREW_NO_ANALYTICS = "1";
-        HOMEBREW_NO_ENV_HINTS = "1";
-        HOMEBREW_NO_INSECURE_REDIRECT = "1";
-      };
+      extraEnv = homebrewEnv;
     };
 
     casks = [
@@ -40,4 +42,6 @@
       "hammerspoon"
     ];
   };
+
+  environment.variables = homebrewEnv;
 }
