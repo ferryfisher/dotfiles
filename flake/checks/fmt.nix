@@ -1,5 +1,5 @@
 {
-  git,
+  gitMinimal,
   runCommandLocal,
   self,
   stdenv,
@@ -11,7 +11,7 @@ runCommandLocal "fmt-check"
     strictDeps = true;
 
     nativeBuildInputs = [
-      git
+      gitMinimal
       self.formatter.${stdenv.hostPlatform.system}
     ];
   }
