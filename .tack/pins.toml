@@ -17,13 +17,13 @@ follows = { brew-src = "homebrew" }
 
 # These are manually pinned to decouple, update the <rev-or-ref> manually.
 [inputs.homebrew]
-url = "github:Homebrew/brew/6.0.17"
+url = "github:Homebrew/brew/7.0.1"
 type = "fetch"
 
 [inputs.homebrew-cask]
-url = "github:Homebrew/homebrew-cask/b8fadeeaa920a1234e4e1d6fff9001260b225496"
+url = "github:Homebrew/homebrew-cask/7cb180869c4ff9cd6a822a92d8267a1579ef30de"
 type = "fetch"
 
 [inputs.homebrew-core]
-url = "github:Homebrew/homebrew-core/3c8cb71469a83df3cedf38c570160001c08af138"
+url = "github:Homebrew/homebrew-core/2c70d8df74f9f227fefd7e197961d4cde9481fd2"
 type = "fetch"
