@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   nix = {
     channel.enable = false;
