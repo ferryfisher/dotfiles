@@ -5,11 +5,11 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e"
+    "commit": "02bc882f208f3481aa959dbbee8ce5edad2fd8b2"
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "5eb287fdbd523c3a1b3d01f304f43570e73e259b"
+    "commit": "8d79f2410c76e62b92e51c28c82e28c1c5a3daeb"
   },
   "indentmini.nvim": {
     "branch": "main",
