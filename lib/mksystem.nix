@@ -19,10 +19,6 @@ let
       arch ? defaultArch,
     }:
     eval {
-      specialArgs = {
-        inherit inputs self;
-      };
-
       modules = self.lib.importModules [
         (self + "/hosts/${name}")
         (self + "/modules/common")
@@ -32,22 +28,24 @@ let
           networking.hostName = name;
         }
       ];
+
+      specialArgs = { inherit inputs self; };
     };
 in
 {
   inherit mkSystem;
-
-  nixos = mkSystem {
-    eval = nixpkgs.lib.nixosSystem;
-    moduleSet = "nixos";
-    platform = "linux";
-    defaultArch = "x86_64";
-  };
 
   darwin = mkSystem {
     eval = darwin.lib.darwinSystem;
     moduleSet = "darwin";
     platform = "darwin";
     defaultArch = "aarch64";
+  };
+
+  nixos = mkSystem {
+    eval = nixpkgs.lib.nixosSystem;
+    moduleSet = "nixos";
+    platform = "linux";
+    defaultArch = "x86_64";
   };
 }
