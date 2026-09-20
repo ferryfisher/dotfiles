@@ -62,14 +62,14 @@ return {
           local hl = {}
 
           for i = 1, #string do
-            table.insert(hl, {
-              permissions_hlgroup[string:sub(i, i)],
+            hl[i] = {
+              permissions_hlgroup[string:sub(i, i)] or permissions_hlgroup["-"],
               i - 1,
               i,
-            })
+            }
           end
 
-          return hl or permissions_hlgroup["-"]
+          return hl
         end,
       },
       { "size", align = "right", highlight = "Number" },

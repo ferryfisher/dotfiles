@@ -8,46 +8,38 @@ autocmd("LspAttach", {
   callback = function(args)
     local client = lsp.get_client_by_id(args.data.client_id)
 
-    if not client then
+    if not client or not client:supports_method("textDocument/completion") then
       return
     end
 
-    local buf = args.buf
-    local chars = client.server_capabilities.completionProvider.triggerCharacters
+    local provider = client.server_capabilities.completionProvider
 
-    if chars then
-      local set = {}
+    if not provider then
+      return
+    end
 
-      for _, v in next, chars do
-        set[v] = true
-      end
+    local chars = provider.triggerCharacters or {}
+    local seen = {}
 
-      for k in string.gmatch("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", ".") do
-        if not set[k] then
-          table.insert(chars, k)
-        end
+    for _, char in next, chars do
+      seen[char] = true
+    end
+
+    local n = #chars
+    local alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    for i = 1, #alphabet do
+      local char = alphabet:sub(i, i)
+
+      if not seen[char] then
+        n = n + 1
+        chars[n] = char
       end
     end
 
-    lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+    provider.triggerCharacters = chars
 
-    autocmd("CompleteChanged", {
-      buffer = buf,
-      group = group,
-      callback = function()
-        local info = vim.fn.complete_info({ "selected" })
-        local bufnr = info.preview_bufnr
-
-        if bufnr and vim.bo[bufnr].filetype == "" then
-          vim.bo[bufnr].filetype = "markdown"
-
-          local win = vim.wo[info.preview_winid]
-          win.conceallevel = 2
-          win.concealcursor = "niv"
-          win.wrap = true
-        end
-      end,
-    })
+    lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
   end,
 })
 
