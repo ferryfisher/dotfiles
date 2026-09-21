@@ -165,8 +165,8 @@ do
       .. flags
       .. "-  T"
       .. api.nvim_tabpage_get_number(0)
-      .. " %#Title#"
-      .. path
+      .. " "
+      .. highlight("Title", path)
   end
 end
 
@@ -271,10 +271,6 @@ local function update_all(buffer, bufnr)
 end
 
 local function initialize(bufnr)
-  if vim.bo[bufnr].buftype ~= "" then
-    return
-  end
-
   local state = {
     file = "",
     progress = "",
@@ -397,9 +393,4 @@ do
   })
 end
 
-do
-  local bufnr = api.nvim_get_current_buf()
-  if vim.bo[bufnr].buftype == "" then
-    initialize(bufnr)
-  end
-end
+initialize(api.nvim_get_current_buf())
