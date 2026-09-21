@@ -275,7 +275,7 @@ local function initialize(bufnr)
     return
   end
 
-  local buffer = {
+  local state = {
     file = "",
     progress = "",
     git = "",
@@ -286,8 +286,8 @@ local function initialize(bufnr)
     git_pending = false,
   }
 
-  buffers[bufnr] = buffer
-  update_all(buffer, bufnr)
+  buffers[bufnr] = state
+  update_all(state, bufnr)
 end
 
 do
@@ -302,10 +302,10 @@ do
         return
       end
 
-      local buffer = buffers[bufnr]
+      local state = buffers[bufnr]
 
-      if buffer then
-        update_all(buffer, bufnr)
+      if state then
+        update_all(state, bufnr)
       else
         initialize(bufnr)
       end
@@ -315,10 +315,10 @@ do
   autocmd("BufWinEnter", {
     group = group,
     callback = function(args)
-      local buffer = buffers[args.buf]
+      local state = buffers[args.buf]
 
-      if buffer and win_type(0) == "" then
-        set_option("statusline", buffer.statusline, { win = 0 })
+      if state and win_type(0) == "" then
+        set_option("statusline", state.statusline, { win = 0 })
       end
     end,
   })
@@ -328,10 +328,10 @@ do
     pattern = { "modified", "readonly", "fileencoding", "fileformat" },
     callback = function()
       local bufnr = api.nvim_get_current_buf()
-      local buffer = buffers[bufnr]
+      local state = buffers[bufnr]
 
-      if buffer then
-        update_file(buffer, bufnr)
+      if state then
+        update_file(state, bufnr)
         refresh(bufnr)
       end
     end,
