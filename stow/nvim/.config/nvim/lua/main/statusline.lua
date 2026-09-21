@@ -77,8 +77,39 @@ do
   end
 end
 
-local function highlight(group, value)
-  return "%#" .. group .. "#" .. tostring(value) .. "%*"
+local refresh
+do
+  local function compose(state)
+    return state.file
+      .. state.progress
+      .. state.git
+      .. "%=%="
+      .. state.lsp
+      .. state.diagnostics
+      .. "  %P (%{printf('L%-3d, C%-2d', line('.'), col('.'))})"
+  end
+
+  local function install(bufnr, statusline)
+    for _, win in next, api.nvim_list_wins() do
+      if api.nvim_win_get_buf(win) == bufnr and win_type(win) == "" then
+        set_option("statusline", statusline, { win = win })
+      end
+    end
+  end
+
+  refresh = function(bufnr)
+    local state = buffers[bufnr]
+    local statusline = compose(state)
+
+    if statusline == state.statusline then
+      return
+    end
+
+    state.statusline = statusline
+
+    install(bufnr, statusline)
+    redraw()
+  end
 end
 
 local function git_status(bufnr)
@@ -86,77 +117,8 @@ local function git_status(bufnr)
   return ok and status or nil
 end
 
-local function compose(buffer)
-  buffer.statusline = buffer.file
-    .. buffer.progress
-    .. buffer.git
-    .. "%=%="
-    .. buffer.lsp
-    .. buffer.diagnostics
-    .. "  %P (%{printf('L%-3d, C%-2d', line('.'), col('.'))})"
-end
-
-local function install(bufnr)
-  local statusline = buffers[bufnr].statusline
-
-  for _, win in next, api.nvim_list_wins() do
-    if api.nvim_win_get_buf(win) == bufnr and win_type(win) == "" then
-      set_option("statusline", statusline, { win = win })
-    end
-  end
-end
-
-local function refresh(bufnr)
-  compose(buffers[bufnr])
-  install(bufnr)
-  redraw()
-end
-
-local function update_file(buffer, bufnr)
-  local options = vim.bo[bufnr]
-  local name = api.nvim_buf_get_name(bufnr)
-
-  local path = name == "" and "[No Name]"
-    or format("%s/%s", fnamemodify(name, ":h:t"), fnamemodify(name, ":t"))
-
-  local flags = options.readonly and (options.modified and "%*" or "%%")
-    or (options.modified and "**" or "--")
-
-  buffer.file = (encoding[options.fileencoding] or "-")
-    .. (vim.o.encoding == "utf-8" and "U" or "")
-    .. (fileformat[options.fileformat] or ":")
-    .. flags
-    .. "-  T"
-    .. api.nvim_tabpage_get_number(0)
-    .. " %#Title#"
-    .. path
-end
-
-local function update_progress(buffer, args)
-  local params = args.data and args.data.params
-  local value = params and params.value
-
-  if value and value.message and value.kind ~= "end" then
-    buffer.spinner = buffer.spinner % #spinner + 1
-    buffer.progress = " " .. spinner[buffer.spinner]
-  else
-    buffer.progress = ""
-  end
-end
-
-local function update_lsp(buffer, bufnr, detached)
-  local clients = lsp.get_clients({ bufnr = bufnr })
-  local names = {}
-  local count = 0
-
-  for _, client in next, clients do
-    if client.id ~= detached then
-      count = count + 1
-      names[count] = client.name
-    end
-  end
-
-  buffer.lsp = count > 0 and " [" .. concat(names, ",") .. "]" or ""
+local function highlight(group, value)
+  return "%#" .. group .. "#" .. tostring(value) .. "%*"
 end
 
 local function update_diagnostics(buffer, bufnr, diagnostics)
@@ -189,6 +151,26 @@ local function update_diagnostics(buffer, bufnr, diagnostics)
   else
     buffer.diagnostics = " [" .. concat(parts, " ") .. "]"
   end
+end
+
+local function update_file(buffer, bufnr)
+  local options = vim.bo[bufnr]
+  local name = api.nvim_buf_get_name(bufnr)
+
+  local path = name == "" and "[No Name]"
+    or format("%s/%s", fnamemodify(name, ":h:t"), fnamemodify(name, ":t"))
+
+  local flags = options.readonly and (options.modified and "%*" or "%%")
+    or (options.modified and "**" or "--")
+
+  buffer.file = (encoding[options.fileencoding] or "-")
+    .. (vim.o.encoding == "utf-8" and "U" or "")
+    .. (fileformat[options.fileformat] or ":")
+    .. flags
+    .. "-  T"
+    .. api.nvim_tabpage_get_number(0)
+    .. " %#Title#"
+    .. path
 end
 
 local function update_git(buffer, bufnr, status)
@@ -236,7 +218,34 @@ local function update_git(buffer, bufnr, status)
   end
 end
 
-local function update(buffer, bufnr)
+local function update_lsp(buffer, bufnr, detached)
+  local clients = lsp.get_clients({ bufnr = bufnr })
+  local names = {}
+  local count = 0
+
+  for _, client in next, clients do
+    if client.id ~= detached then
+      count = count + 1
+      names[count] = client.name
+    end
+  end
+
+  buffer.lsp = count > 0 and " [" .. concat(names, ",") .. "]" or ""
+end
+
+local function update_progress(buffer, args)
+  local params = args.data and args.data.params
+  local value = params and params.value
+
+  if value and value.message and value.kind ~= "end" then
+    buffer.spinner = buffer.spinner % #spinner + 1
+    buffer.progress = " " .. spinner[buffer.spinner]
+  else
+    buffer.progress = ""
+  end
+end
+
+local function update_all(buffer, bufnr)
   update_file(buffer, bufnr)
   update_lsp(buffer, bufnr)
   update_diagnostics(buffer, bufnr, diagnostic.get(bufnr))
@@ -261,113 +270,115 @@ local function initialize(bufnr)
   }
 
   buffers[bufnr] = buffer
-  update(buffer, bufnr)
+  update_all(buffer, bufnr)
 end
 
-local group = api.nvim_create_augroup("statusline", {})
+do
+  local group = api.nvim_create_augroup("statusline", {})
 
-autocmd({ "BufEnter", "BufFilePost", "FileType" }, {
-  group = group,
-  callback = function(args)
-    local bufnr = args.buf
+  autocmd({ "BufEnter", "BufFilePost", "FileType" }, {
+    group = group,
+    callback = function(args)
+      local bufnr = args.buf
 
-    if vim.bo[bufnr].buftype ~= "" then
-      return
-    end
+      if vim.bo[bufnr].buftype ~= "" then
+        return
+      end
 
-    local buffer = buffers[bufnr]
+      local buffer = buffers[bufnr]
 
-    if buffer then
-      update(buffer, bufnr)
-    else
-      initialize(bufnr)
-    end
-  end,
-})
+      if buffer then
+        update_all(buffer, bufnr)
+      else
+        initialize(bufnr)
+      end
+    end,
+  })
 
-autocmd("BufWinEnter", {
-  group = group,
-  callback = function(args)
-    local buffer = buffers[args.buf]
+  autocmd("BufWinEnter", {
+    group = group,
+    callback = function(args)
+      local buffer = buffers[args.buf]
 
-    if buffer and win_type(0) == "" then
-      set_option("statusline", buffer.statusline, { win = 0 })
-    end
-  end,
-})
+      if buffer and win_type(0) == "" then
+        set_option("statusline", buffer.statusline, { win = 0 })
+      end
+    end,
+  })
 
-autocmd("OptionSet", {
-  group = group,
-  pattern = { "modified", "readonly", "fileencoding", "fileformat" },
-  callback = function()
-    local bufnr = api.nvim_get_current_buf()
-    local buffer = buffers[bufnr]
+  autocmd("OptionSet", {
+    group = group,
+    pattern = { "modified", "readonly", "fileencoding", "fileformat" },
+    callback = function()
+      local bufnr = api.nvim_get_current_buf()
+      local buffer = buffers[bufnr]
 
-    if buffer then
-      update_file(buffer, bufnr)
-      refresh(bufnr)
-    end
-  end,
-})
+      if buffer then
+        update_file(buffer, bufnr)
+        refresh(bufnr)
+      end
+    end,
+  })
 
-autocmd("DiagnosticChanged", {
-  group = group,
-  callback = function(args)
-    local buffer = buffers[args.buf]
+  autocmd("DiagnosticChanged", {
+    group = group,
+    callback = function(args)
+      local buffer = buffers[args.buf]
 
-    if buffer then
-      update_diagnostics(buffer, args.buf, args.data.diagnostics)
-      refresh(args.buf)
-    end
-  end,
-})
+      if buffer then
+        update_diagnostics(buffer, args.buf, args.data.diagnostics)
+        refresh(args.buf)
+      end
+    end,
+  })
 
-autocmd({ "LspAttach", "LspDetach" }, {
-  group = group,
-  callback = function(args)
-    local buffer = buffers[args.buf]
+  autocmd({ "LspAttach", "LspDetach" }, {
+    group = group,
+    callback = function(args)
+      local buffer = buffers[args.buf]
 
-    if buffer then
-      local detached = args.event == "LspDetach" and args.data.client_id or nil
+      if buffer then
+        local detached = args.event == "LspDetach" and args.data.client_id or nil
 
-      update_lsp(buffer, args.buf, detached)
-      update_diagnostics(buffer, args.buf, diagnostic.get(args.buf))
-      refresh(args.buf)
-    end
-  end,
-})
+        update_lsp(buffer, args.buf, detached)
+        update_diagnostics(buffer, args.buf, diagnostic.get(args.buf))
+        refresh(args.buf)
+      end
+    end,
+  })
 
-autocmd("LspProgress", {
-  group = group,
-  callback = function(args)
-    local buffer = buffers[args.buf]
+  autocmd("LspProgress", {
+    group = group,
+    callback = function(args)
+      local buffer = buffers[args.buf]
 
-    if buffer then
-      update_progress(buffer, args)
-      refresh(args.buf)
-    end
-  end,
-})
+      if buffer then
+        update_progress(buffer, args)
+        refresh(args.buf)
+      end
+    end,
+  })
 
-autocmd("User", {
-  group = group,
-  pattern = "GitSignsUpdate",
-  callback = function(args)
-    local buffer = buffers[args.buf]
+  autocmd("User", {
+    group = group,
+    pattern = "GitSignsUpdate",
+    callback = function(args)
+      local buffer = buffers[args.buf]
 
-    if buffer then
-      update_git(buffer, args.buf, git_status(args.buf))
-      refresh(args.buf)
-    end
-  end,
-})
+      if buffer then
+        update_git(buffer, args.buf, git_status(args.buf))
+        refresh(args.buf)
+      end
+    end,
+  })
 
-autocmd("BufDelete", {
-  group = group,
-  callback = function(args)
-    buffers[args.buf] = nil
-  end,
-})
+  autocmd("BufDelete", {
+    group = group,
+    callback = function(args)
+      buffers[args.buf] = nil
+    end,
+  })
+end
 
 do
   for _, name in next, { "Add", "Change", "Delete" } do
