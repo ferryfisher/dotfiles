@@ -296,7 +296,7 @@ do
   end
 end
 
-local update_progress
+local update_lsp_progress
 do
   local spinner = { "|", "/", "-", "\\" }
 
@@ -312,7 +312,7 @@ do
     return "", spinner_index
   end
 
-  update_progress = function(buffer, args)
+  update_lsp_progress = function(buffer, args)
     buffer.progress, buffer.spinner = progress_text(buffer.spinner, args)
   end
 end
@@ -422,7 +422,15 @@ do
   autocmd("LspProgress", {
     group = group,
     callback = function(args)
-      update_buffer(args.buf, update_progress, args)
+      local client = lsp.get_client_by_id(args.data.client_id)
+
+      if not client then
+        return
+      end
+
+      for bufnr in next, client.attached_buffers do
+        update_buffer(bufnr, update_lsp_progress, args)
+      end
     end,
   })
 
