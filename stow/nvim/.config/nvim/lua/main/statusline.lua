@@ -1,144 +1,137 @@
 local api = vim.api
-local autocmd = api.nvim_create_autocmd
-local set_option = api.nvim_set_option_value
-
-local bo = vim.bo
+local redraw = api.nvim__redraw
 local diagnostic = vim.diagnostic
 local lsp = vim.lsp
-local o = vim.o
-local redraw = vim.cmd.redrawstatus
 local schedule = vim.schedule
-
-local concat = table.concat
-local format = string.format
 local next = next
 
-local fnamemodify
-local win_type
+local basename
+local dirname
 do
-  local fn = vim.fn
-  fnamemodify = fn.fnamemodify
-  win_type = fn.win_gettype
+  local fs = vim.fs
+  basename = fs.basename
+  dirname = fs.dirname
 end
 
+local statusline = "%{%get(b:, 'ferry_statusline', '')%}"
 local buffers = {}
+local redraw_pending = {}
 
 local function highlight(group, value)
-  return "%#" .. group .. "#" .. tostring(value) .. "%*"
+  return "%#" .. group .. "#" .. value .. "%*"
 end
 
-local refresh
-local update_buffer
-do
-  local function compose(buffer)
-    return buffer.file
-      .. " "
-      .. buffer.progress
-      .. " "
-      .. buffer.git
-      .. "%=%="
-      .. buffer.lsp
-      .. " ("
-      .. "%{toupper(strpart(&ft, 0, 1)) . strpart(&ft, 1)}"
-      .. (buffer.diagnostics ~= "" and " " .. buffer.diagnostics or "")
-      .. ")"
-      .. "  "
-      .. "%P (%{printf('L%-3d, C%-2d', line('.'), col('.'))})"
+local function request_redraw(bufnr)
+  if redraw_pending[bufnr] then
+    return
   end
 
-  local function install(buffer)
-    for _, win in next, api.nvim_list_wins() do
-      if api.nvim_win_get_buf(win) == buffer.bufnr and win_type(win) == "" then
-        set_option("statusline", buffer.statusline, { win = win })
-      end
+  redraw_pending[bufnr] = true
+
+  schedule(function()
+    redraw_pending[bufnr] = nil
+
+    if api.nvim_buf_is_valid(bufnr) then
+      redraw({ buf = bufnr, statusline = true })
     end
+  end)
+end
+
+local function refresh(buffer)
+  local value = buffer.file
+    .. " "
+    .. buffer.progress
+    .. " "
+    .. buffer.git
+    .. "%="
+    .. buffer.lsp
+    .. " ("
+    .. "%{toupper(strpart(&ft, 0, 1)) . strpart(&ft, 1)}"
+    .. (buffer.diagnostics ~= "" and " " .. buffer.diagnostics or "")
+    .. ")"
+    .. " "
+    .. "%P (L%-3l, C%-2c)"
+
+  if value == buffer.statusline then
+    return
   end
 
-  refresh = function(buffer)
-    local statusline = compose(buffer)
+  buffer.statusline = value
+  vim.b[buffer.bufnr].ferry_statusline = value
+  request_redraw(buffer.bufnr)
+end
 
-    if statusline == buffer.statusline then
-      return
-    end
+local function update_buffer(bufnr, update, ...)
+  local buffer = buffers[bufnr]
 
-    buffer.statusline = statusline
-
-    install(buffer)
-    redraw()
+  if not buffer then
+    return
   end
 
-  update_buffer = function(bufnr, update, ...)
-    local buffer = buffers[bufnr]
-
-    if not buffer or not api.nvim_buf_is_valid(bufnr) then
-      return
-    end
-
-    update(buffer, ...)
-    refresh(buffer)
-  end
+  update(buffer, ...)
+  refresh(buffer)
 end
 
 local update_diagnostics
 do
-  local diagnostic_groups = {
-    "DiagnosticError",
-    "DiagnosticWarn",
-    "DiagnosticInfo",
-  }
+  local severity = diagnostic.severity
 
-  local function render_diagnostics(diagnostics, enabled, has_lsp)
-    if not enabled or not has_lsp then
-      return ""
-    end
-
-    local counts = { 0, 0, 0 }
+  local function render(diagnostics)
+    local errors, warnings, infos = 0, 0, 0
 
     for _, item in next, diagnostics do
-      local severity = item.severity
-
-      if severity and severity <= diagnostic.severity.INFO then
-        counts[severity] = counts[severity] + 1
+      if item.severity == severity.ERROR then
+        errors = errors + 1
+      elseif item.severity == severity.WARN then
+        warnings = warnings + 1
+      elseif item.severity == severity.INFO then
+        infos = infos + 1
       end
     end
 
-    local parts = {}
-
-    for severity = diagnostic.severity.ERROR, diagnostic.severity.INFO do
-      parts[severity] = highlight(diagnostic_groups[severity], counts[severity])
-    end
-
-    return "[" .. concat(parts, " ") .. "]"
+    return "["
+      .. highlight("DiagnosticError", errors)
+      .. " "
+      .. highlight("DiagnosticWarn", warnings)
+      .. " "
+      .. highlight("DiagnosticInfo", infos)
+      .. "]"
   end
 
   update_diagnostics = function(buffer, diagnostics)
     local bufnr = buffer.bufnr
 
-    buffer.diagnostics = render_diagnostics(
-      diagnostics,
-      diagnostic.is_enabled({ bufnr = bufnr }),
-      next(lsp.get_clients({ bufnr = bufnr })) ~= nil
-    )
+    if
+      not diagnostic.is_enabled({ bufnr = bufnr })
+      or not next(lsp.get_clients({ bufnr = bufnr }))
+    then
+      buffer.diagnostics = ""
+      return
+    end
+
+    buffer.diagnostics = render(diagnostics)
   end
 end
 
 local update_file
 do
+  local bo = vim.bo
+  local o = vim.o
+  local format = string.format
   local encoding = {
     [""] = "U",
     ["utf-8"] = "U",
     ["latin1"] = "1",
   }
-
   local fileformat = {
+    unix = ":",
     dos = "\\",
     mac = "/",
   }
 
-  local function render_file(options, name)
+  local function render(options, name)
     local path = name == "" and "[No Name]"
-      or format("%s/%s", fnamemodify(name, ":h:t"), fnamemodify(name, ":t"))
-
+      or format("%s/%s", basename(dirname(name)), basename(name))
     local flags = options.readonly and (options.modified and "%*" or "%%")
       or (options.modified and "**" or "--")
 
@@ -151,134 +144,186 @@ do
   end
 
   update_file = function(buffer)
-    local bufnr = buffer.bufnr
-    buffer.file = render_file(bo[bufnr], api.nvim_buf_get_name(bufnr))
+    buffer.file = render(bo[buffer.bufnr], api.nvim_buf_get_name(buffer.bufnr))
   end
 end
 
 local update_git
+local stop_git
 do
-  local git_fields = {
-    { "head", "GitHead", "Git:" },
-    { "added", "GitAdd", "+" },
-    { "changed", "GitChange", "~" },
-    { "removed", "GitDelete", "-" },
-  }
+  local schedule_wrap = vim.schedule_wrap
+  local system = vim.system
+  local trim = vim.trim
 
-  local function cancel(buffer)
+  local function render(head, added, changed, removed)
+    if head == "" and added == 0 and changed == 0 and removed == 0 then
+      return ""
+    end
+
+    return (head ~= "" and highlight("GitHead", "Git:" .. head) or "")
+      .. (added > 0 and " " .. highlight("GitAdd", "+" .. added) or "")
+      .. (changed > 0 and " " .. highlight("GitChange", "~" .. changed) or "")
+      .. (removed > 0 and " " .. highlight("GitDelete", "-" .. removed) or "")
+  end
+
+  local function diffstat(stdout)
+    local added, changed, removed = 0, 0, 0
+    local from = 1
+
+    while true do
+      local _, finish, old, new = stdout:find("@@ %-%d+,?(%d*) %+%d+,?(%d*)", from)
+
+      if not finish then
+        return added, changed, removed
+      end
+
+      old = old ~= "" and old * 1 or 1
+      new = new ~= "" and new * 1 or 1
+
+      local common = old < new and old or new
+
+      changed = changed + common
+      added = added + new - common
+      removed = removed + old - common
+
+      from = finish + 1
+    end
+  end
+
+  stop_git = function(buffer)
     local process = buffer.git_process
 
     if not process then
       return
     end
 
+    buffer.git_process = nil
     process:kill("sigterm")
-    buffer.git_process = nil
   end
 
-  local function parse_git_status(bufnr)
-    local ok, status = pcall(api.nvim_buf_get_var, bufnr, "gitsigns_status_dict")
-
-    if not ok or type(status) ~= "table" or next(status) == nil then
-      return nil
-    end
-
-    return {
-      head = type(status.head) == "string" and status.head ~= "" and status.head or nil,
-      added = type(status.added) == "number" and status.added or 0,
-      changed = type(status.changed) == "number" and status.changed or 0,
-      removed = type(status.removed) == "number" and status.removed or 0,
-    }
-  end
-
-  local function render_git(status)
-    if not status then
-      return ""
-    end
-
-    local parts = {}
-    local count = 0
-
-    for _, field in next, git_fields do
-      local name = field[1]
-      local value = status[name]
-
-      if name == "head" then
-        if value then
-          count = count + 1
-          parts[count] = highlight(field[2], field[3] .. value)
-        end
-      elseif value > 0 then
-        count = count + 1
-        parts[count] = highlight(field[2], field[3] .. value)
-      end
-    end
-
-    return concat(parts, " ")
-  end
-
-  local function finish(buffer, process)
-    if buffer.git_process ~= process then
-      return
-    end
-
-    buffer.git_process = nil
-
-    local status = parse_git_status(buffer.bufnr)
-
-    if status then
-      local branch = process.code == 0 and vim.trim(process.stdout or "") or nil
-      status.head = branch ~= "" and branch or status.head
-    end
-
-    buffer.git = render_git(status)
-    refresh(buffer)
-  end
-
-  update_git = function(buffer)
-    local bufnr = buffer.bufnr
-    local status = parse_git_status(bufnr)
-
-    if not status then
-      cancel(buffer)
-      buffer.git = ""
-      return
-    end
-
-    buffer.git = render_git(status)
-
-    if status.head or buffer.git_process then
-      return
-    end
-
+  local function start_diff(buffer, head, name)
     local process
-    process = vim.system(
-      { "git", "config", "--get", "init.defaultBranch" },
-      { text = true },
-      function()
-        schedule(function()
-          local state = buffers[buffer.bufnr]
 
-          if state then
-            finish(state, process)
-          end
-        end)
-      end
+    process = system(
+      {
+        "git",
+        "-C",
+        dirname(name),
+        "diff",
+        "-U0",
+        "--no-color",
+        "--no-ext-diff",
+        "--",
+        name,
+      },
+      {
+        text = true,
+        stderr = false,
+      },
+      schedule_wrap(function(result)
+        if buffer.git_process ~= process then
+          return
+        end
+
+        buffer.git_process = nil
+
+        if result.code == 0 then
+          local added, changed, removed = diffstat(result.stdout or "")
+          buffer.git = render(head, added, changed, removed)
+        else
+          buffer.git = render(head, 0, 0, 0)
+        end
+
+        refresh(buffer)
+      end)
     )
 
     buffer.git_process = process
   end
 
+  local function start_head(buffer, name)
+    local process
+    process = system(
+      {
+        "git",
+        "-C",
+        dirname(name),
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD",
+      },
+      {
+        text = true,
+        stderr = false,
+      },
+      schedule_wrap(function(result)
+        if buffer.git_process ~= process then
+          return
+        end
+
+        if result.code == 0 then
+          start_diff(buffer, trim(result.stdout or ""), name)
+        else
+          buffer.git_process = nil
+          buffer.git = ""
+          refresh(buffer)
+        end
+      end)
+    )
+
+    buffer.git_process = process
+  end
+
+  local function gitsigns(bufnr)
+    local value = vim.b[bufnr].gitsigns_status_dict
+
+    if type(value) ~= "table" then
+      return
+    end
+
+    return type(value.head) == "string" and value.head or "",
+      type(value.added) == "number" and value.added or 0,
+      type(value.changed) == "number" and value.changed or 0,
+      type(value.removed) == "number" and value.removed or 0
+  end
+
+  update_git = function(buffer)
+    local bufnr = buffer.bufnr
+    local head, added, changed, removed = gitsigns(bufnr)
+
+    if head ~= nil then
+      stop_git(buffer)
+      buffer.git = render(head, added, changed, removed)
+      return
+    end
+
+    if buffer.git_process then
+      return
+    end
+
+    local name = api.nvim_buf_get_name(bufnr)
+
+    if name == "" then
+      buffer.git = ""
+      return
+    end
+
+    start_head(buffer, name)
+  end
+
   for _, name in next, { "Add", "Change", "Delete" } do
-    local diff = api.nvim_get_hl(0, { name = "Diff" .. name })
-    api.nvim_set_hl(0, "Git" .. name, { fg = diff.bg })
+    api.nvim_set_hl(0, "Git" .. name, {
+      fg = api.nvim_get_hl(0, { name = "Diff" .. name }).bg,
+    })
   end
 end
 
 local update_lsp
 do
-  local function render_lsp(clients, detached)
-    local names = {}
+  local concat = table.concat
+  local names = {}
+
+  local function render(clients, detached)
     local count = 0
 
     for _, client in next, clients do
@@ -288,11 +333,15 @@ do
       end
     end
 
-    return count > 0 and "[" .. concat(names, ",") .. "]" or ""
+    if count == 0 then
+      return ""
+    end
+
+    return "[" .. concat(names, ",", 1, count) .. "]"
   end
 
   update_lsp = function(buffer, detached)
-    buffer.lsp = render_lsp(lsp.get_clients({ bufnr = buffer.bufnr }), detached)
+    buffer.lsp = render(lsp.get_clients({ bufnr = buffer.bufnr }), detached)
   end
 end
 
@@ -300,25 +349,36 @@ local update_lsp_progress
 do
   local spinner = { "|", "/", "-", "\\" }
 
-  local function progress_text(spinner_index, args)
+  local function render(index, args)
     local params = args.data and args.data.params
     local value = params and params.value
 
-    if value and value.message and value.kind ~= "end" then
-      spinner_index = spinner_index % #spinner + 1
-      return spinner[spinner_index], spinner_index
+    if value and value.kind ~= "end" then
+      index = index % #spinner + 1
+      return spinner[index], index
     end
 
-    return "", spinner_index
+    return "", index
   end
 
   update_lsp_progress = function(buffer, args)
-    buffer.progress, buffer.spinner = progress_text(buffer.spinner, args)
+    buffer.progress, buffer.spinner = render(buffer.spinner, args)
   end
 end
 
 do
-  local group = api.nvim_create_augroup("ferry.statusline", {})
+  local group = api.nvim_create_augroup("ferry.statusline", { clear = true })
+  local autocmd = api.nvim_create_autocmd
+  local set_option = api.nvim_set_option_value
+  local win_type = vim.fn.win_gettype
+
+  local function install(buffer)
+    if win_type(0) ~= "" or api.nvim_win_get_buf(0) ~= buffer.bufnr then
+      return
+    end
+
+    set_option("statusline", statusline, { win = 0 })
+  end
 
   local function update_all(buffer)
     update_file(buffer)
@@ -329,13 +389,8 @@ do
   end
 
   local function initialize(bufnr)
-    if bo[bufnr].buftype ~= "" then
-      return
-    end
-
     local buffer = {
       bufnr = bufnr,
-
       file = "",
       progress = "",
       git = "",
@@ -343,40 +398,35 @@ do
       diagnostics = "",
       statusline = "",
       spinner = 0,
-
       git_process = nil,
     }
 
     buffers[bufnr] = buffer
+
     update_all(buffer)
+    install(buffer)
   end
 
   autocmd("BufDelete", {
     group = group,
     callback = function(args)
-      local buffer = buffers[args.buf]
-      if not buffer then
-        return
-      end
+      local buf = args.buf
 
-      if buffer.git_process then
-        buffer.git_process:kill("sigterm")
-      end
-
-      buffers[args.buf] = nil
+      stop_git(buffers[buf])
+      redraw_pending[buf] = nil
+      buffers[buf] = nil
     end,
   })
 
   autocmd({ "BufEnter", "BufFilePost", "FileType" }, {
     group = group,
     callback = function(args)
-      local bufnr = args.buf
-      local buffer = buffers[bufnr]
+      local buffer = buffers[args.buf]
 
       if buffer then
         update_all(buffer)
       else
-        initialize(bufnr)
+        initialize(args.buf)
       end
     end,
   })
@@ -384,13 +434,7 @@ do
   autocmd("BufWinEnter", {
     group = group,
     callback = function(args)
-      local buffer = buffers[args.buf]
-
-      if not buffer or win_type(0) ~= "" then
-        return
-      end
-
-      set_option("statusline", buffer.statusline, { win = 0 })
+      install(buffers[args.buf])
     end,
   })
 
@@ -414,7 +458,7 @@ do
       local detached = args.event == "LspDetach" and args.data.client_id or nil
 
       update_lsp(buffer, detached)
-      update_diagnostics(buffer, diagnostic.get(bufnr))
+      update_diagnostics(buffer, diagnostic.get(args.buf))
       refresh(buffer)
     end,
   })
