@@ -5,7 +5,7 @@
   },
   "fzf-lua": {
     "branch": "main",
-    "commit": "13bb178a299f7493dd64427a58e61904c4b58ecb"
+    "commit": "78b85d2a522b1e6a2d154216b3e532a1df1ad6d7"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -25,7 +25,7 @@
   },
   "nvim-treesitter": {
     "branch": "main",
-    "commit": "f603a2f4da48728f80257fb5fbb90145fd1dc173"
+    "commit": "25a9b06a09ea4e10712bec37e7b7d9f423262b91"
   },
   "oil.nvim": {
     "branch": "master",
