@@ -7,10 +7,12 @@ treefmt.withConfig {
     tree-root-file = "flake.nix";
 
     excludes = [
-      "LICENSE"
+      "*-lock.json"
+      "*.lock"
+      "*.lock.json"
       ".gitignore"
       ".gitmodules"
-      "*.lock"
+      "LICENSE"
     ];
 
     formatter = {
