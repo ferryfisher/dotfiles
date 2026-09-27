@@ -3,5 +3,4 @@ return {
   branch = "main",
   build = ":TSUpdate",
   event = "BufReadPre",
-  opts = {},
 }

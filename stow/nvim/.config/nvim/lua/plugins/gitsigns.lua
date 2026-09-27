@@ -14,6 +14,4 @@ return {
       desc = "Gitsigns next_hunk",
     },
   },
-
-  opts = {},
 }

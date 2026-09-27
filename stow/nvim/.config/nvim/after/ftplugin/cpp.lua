@@ -1,3 +1,4 @@
-local ol = vim.opt_local
-
-ol.cinkeys:remove(":")
+vim.api.nvim_set_option_value("cinkeys", ":", {
+  operation = "remove",
+  scope = "local",
+})

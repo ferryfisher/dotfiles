@@ -9,7 +9,7 @@ return {
     keywordStyle = italic,
     statementStyle = { bold = false },
     transparent = true,
-    terminalcolors = true,
+    terminalColors = true,
 
     overrides = function(colors)
       local c = require("kanagawa.lib.color")

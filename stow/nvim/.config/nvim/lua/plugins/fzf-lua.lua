@@ -30,8 +30,8 @@ return {
     },
     {
       "<leader>fd",
-      "<cmd>FzfLua lsp_document_diagnostics<cr>",
-      desc = "FzfLua lsp_document_diagnostics",
+      "<cmd>FzfLua diagnostics_document<cr>",
+      desc = "FzfLua diagnostics_document",
     },
     {
       "<leader>fs",
@@ -40,8 +40,8 @@ return {
     },
     {
       "<leader>fD",
-      "<cmd>FzfLua lsp_workspace_diagnostics<cr>",
-      desc = "FzfLua lsp_workspace_diagnostics",
+      "<cmd>FzfLua diagnostics_workspace<cr>",
+      desc = "FzfLua diagnostics_workspace",
     },
     {
       "<leader>fo",

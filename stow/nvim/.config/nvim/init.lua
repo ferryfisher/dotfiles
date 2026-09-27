@@ -24,7 +24,9 @@ if not vim.uv.fs_stat(lazypath) then
   })
 end
 
-vim.opt.rtp:prepend(lazypath)
+vim.api.nvim_set_option_value("runtimepath", lazypath, {
+  operation = "prepend",
+})
 
 require("lazy").setup("plugins", {
   change_detection = { enabled = false, notify = false },

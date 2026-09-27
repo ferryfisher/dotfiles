@@ -88,4 +88,6 @@ o.wildignorecase = true
 -- }}}}
 
 -- Turn off blinking cursor in terminal mode
-o.guicursor = o.guicursor .. ",a:blinkon0"
+vim.api.nvim_set_option_value("guicursor", "a:blinkon0", {
+  operation = "append",
+})
