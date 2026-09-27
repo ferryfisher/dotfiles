@@ -12,7 +12,6 @@
     nix-output-monitor
     ripgrep
     starship
-    stow
     tmux
     tree-sitter
     yazi
