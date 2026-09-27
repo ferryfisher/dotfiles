@@ -88,4 +88,4 @@ o.wildignorecase = true
 -- }}}}
 
 -- Turn off blinking cursor in terminal mode
-vim.opt.guicursor:remove({ "t:block-blinkon500-blinkoff500-TermCursor" })
+o.guicursor = o.guicursor .. ",a:blinkon0"
