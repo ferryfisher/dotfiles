@@ -1,53 +1,52 @@
+local api = vim.api
 local map = vim.keymap.set
-local fn = vim.fn
+local expr = { expr = true }
 
-local pairs = { "()", "[]", "{}", '""', "''", "``" }
-local no_skip = {}
+local pair = {
+  ['"'] = '"',
+  ["'"] = "'",
+  ["("] = ")",
+  ["["] = "]",
+  ["`"] = "`",
+  ["{"] = "}",
+}
 
-local function prev_char()
-  local c = fn.col(".") - 1
-  return c > 0 and fn.getline("."):sub(c, c) or ""
+local function in_pair()
+  local col = api.nvim_win_get_cursor(0)[2]
+  local line = api.nvim_get_current_line()
+
+  return pair[line:sub(col, col)] == line:sub(col + 1, col + 1)
 end
 
 local function next_char()
-  local c = fn.col(".")
-  local l = fn.getline(".")
-  return c <= #l and l:sub(c, c) or ""
+  local col = api.nvim_win_get_cursor(0)[2]
+  return api.nvim_get_current_line():sub(col + 1, col + 1)
 end
 
-local function in_pair()
-  local p = prev_char() .. next_char()
-  for _, v in next, pairs do
-    if v == p then
-      return v
-    end
+for open, close in next, pair do
+  if open == close then
+    map("i", open, function()
+      if next_char() == open then
+        return "<Right>"
+      end
+
+      return open .. open .. "<Left>"
+    end, expr)
+  else
+    map("i", open, function()
+      return open .. close .. "<Left>"
+    end, expr)
+
+    map("i", close, function()
+      return next_char() == close and "<Right>" or close
+    end, expr)
   end
 end
-
-for _, p in next, pairs do
-  local o = p:sub(1, 1)
-  map("i", o, function()
-    if o == p:sub(2, 2) then
-      return next_char() == o and (no_skip[o] and o or "<Right>") or p .. "<Left>"
-    else
-      return p .. "<Left>"
-    end
-  end, { expr = true })
-end
-
-for _, p in next, pairs do
-  local c = p:sub(2, 2)
-  if c ~= p:sub(1, 1) then
-    map("i", c, function()
-      return next_char() == c and (no_skip[c] and c or "<Right>") or c
-    end, { expr = true })
-  end
-end
-
-map("i", "<CR>", function()
-  return in_pair() and "<CR><Esc>O" or "<CR>"
-end, { expr = true })
 
 map("i", "<BS>", function()
   return in_pair() and "<BS><Del>" or "<BS>"
-end, { expr = true })
+end, expr)
+
+map("i", "<CR>", function()
+  return in_pair() and "<CR><Esc>O" or "<CR>"
+end, expr)
