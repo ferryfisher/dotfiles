@@ -45,9 +45,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "1dc9728dbd4cb07f07dbfae92e857452f23a2849",
-    "narHash": "sha256-HCMaeovOijfbS8Si/MKKyuMbTpnbVFbS55xKuW/405k=",
-    "lastModified": 1790987223
+    "rev": "fb1f321b0efb31101891ec6cc93d4087bc4ee325",
+    "narHash": "sha256-iu27Z3oFBjEgjFRFpGsaNMslywFY7TbdDkBixWMxLOw=",
+    "lastModified": 1791084526
   },
   "nix-homebrew": {
     "type": "github",
@@ -59,9 +59,9 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst",
-    "rev": "c9fe7d12cd78d1adcd12dd15e24432dde5b155a0",
-    "narHash": "sha256-6j4yqqBUvIbBn29k0y/2jqlv/YJd8CRkTBYhfm5Z/8c="
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1084552.55ba7f49ef29/nixexprs.tar.zst?rev=55ba7f49ef2962b42cbd126522b7df5f95037679&lastModified=1790981744",
+    "rev": "55ba7f49ef2962b42cbd126522b7df5f95037679",
+    "narHash": "sha256-NkNW1Y9AiuKO0HfeTnY555OJTYq9MQE3+Wz4kfBp/fI="
   },
   "tack": {
     "type": "github",
