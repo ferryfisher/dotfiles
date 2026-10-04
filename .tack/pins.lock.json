@@ -1,4 +1,14 @@
 {
+  "$declared": {
+    "darwin": "github:nix-darwin/nix-darwin",
+    "homebrew": "github:Homebrew/brew",
+    "homebrew-cask": "github:Homebrew/homebrew-cask",
+    "homebrew-core": "github:Homebrew/homebrew-core",
+    "neovim": "github:neovim/neovim/nightly",
+    "nix-homebrew": "github:zhaofengli/nix-homebrew",
+    "nixpkgs": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst",
+    "tack": "github:manic-systems/tack"
+  },
   "darwin": {
     "type": "github",
     "owner": "nix-darwin",
@@ -35,9 +45,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "d5e7c7e55ce090bb186edac909262a62920b3fa1",
-    "narHash": "sha256-7PONioI0txTueXyGxttX+hQzggfuRVvzAtfzd2Ujecg=",
-    "lastModified": 1790739048
+    "rev": "1dc9728dbd4cb07f07dbfae92e857452f23a2849",
+    "narHash": "sha256-HCMaeovOijfbS8Si/MKKyuMbTpnbVFbS55xKuW/405k=",
+    "lastModified": 1790987223
   },
   "nix-homebrew": {
     "type": "github",
@@ -49,8 +59,16 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1082290.b6c8664de9b6/nixexprs.tar.zst",
-    "rev": "b6c8664de9b6cc07fe5666a29f91884ba81197c4",
-    "narHash": "sha256-k8Fu4c9Z+4Nh7mUr0cfw++ITQiyEhlWxoJBOkI3tOcQ="
+    "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst",
+    "rev": "c9fe7d12cd78d1adcd12dd15e24432dde5b155a0",
+    "narHash": "sha256-6j4yqqBUvIbBn29k0y/2jqlv/YJd8CRkTBYhfm5Z/8c="
+  },
+  "tack": {
+    "type": "github",
+    "owner": "manic-systems",
+    "repo": "tack",
+    "rev": "4a8b68df58488b311840eb0244c75b4857871789",
+    "narHash": "sha256-ST/08SMwfjtXeP/+72GJYVFkO2xT6PDU5ofh9Gh9IJ8=",
+    "lastModified": 1791058919
   }
 }

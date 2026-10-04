@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   environment = {
-    systemPackages = [ pkgs.tack ];
+    systemPackages = [
+      inputs.tack.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
     variables = {
       TACK_NIX_CONF_TOKENS = "0";
-      GITHUB_TOKEN = "0"; # silences tack token warning
     };
   };
 }
