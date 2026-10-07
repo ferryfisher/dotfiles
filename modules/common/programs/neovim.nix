@@ -1,13 +1,7 @@
-{
-  inputs,
-  pkgs,
-  self,
-  ...
-}:
+{ inputs, pkgs, ... }:
 
 let
-  lock = builtins.fromJSON (builtins.readFile (self + "/.tack/pins.lock.json"));
-  rev = builtins.substring 0 12 lock.neovim.rev;
+  rev = builtins.substring 0 12 inputs._meta.neovim.rev;
 in
 {
   environment.systemPackages = [
