@@ -15,6 +15,7 @@
     colorMoved = zebra
     context = 10
     renames = true
+    submodule = log
     tool = nvim_difftool
     wordDiff = true
     wsErrorHighlight = all
@@ -50,6 +51,6 @@
 [url "git@gitlab.com:"]
     pushInsteadOf = https://gitlab.com/
 [user]
-    name =  Ferry
     email = 217118383+ferryfisher@users.noreply.github.com
+    name =  Ferry
     signingKey = 99E289A14A9C264C
