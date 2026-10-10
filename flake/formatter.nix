@@ -12,6 +12,7 @@ treefmt.withConfig {
       "*.lock.json"
       ".gitignore"
       ".gitmodules"
+      ".tack/default.nix"
       "LICENSE"
     ];
 
