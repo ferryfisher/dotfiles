@@ -1,5 +1,6 @@
-local autocmd = vim.api.nvim_create_autocmd
-local group = vim.api.nvim_create_augroup("ferry", {})
+local api = vim.api
+local autocmd = api.nvim_create_autocmd
+local group = api.nvim_create_augroup("ferry", {})
 
 local parsers = {
   "asm",
@@ -36,13 +37,32 @@ local parsers = {
   "zig",
 }
 
-autocmd("CmdlineEnter", {
-  group = group,
-  once = true,
-  callback = function()
-    require("vim._core.ui2").enable({})
-  end,
-})
+do
+  local match = string.match
+  local mode = api.nvim_get_mode
+  local wo = vim.wo
+
+  local function is_visual_mode(m)
+    return match(m, "^[vV\x16]") ~= nil
+  end
+
+  autocmd("ModeChanged", {
+    desc = "Relative lines in visual mode",
+    group = group,
+    pattern = { "*:[vV\x16]*", "[vV\x16]*:*" },
+    callback = function()
+      wo.relativenumber = is_visual_mode(mode().mode)
+    end,
+  })
+
+  autocmd({ "WinEnter", "WinLeave" }, {
+    desc = "Sync visual-mode numbering",
+    group = group,
+    callback = function()
+      wo.relativenumber = is_visual_mode(mode().mode)
+    end,
+  })
+end
 
 autocmd("FileType", {
   desc = "Treesitter",
@@ -72,6 +92,7 @@ autocmd("FileType", {
 })
 
 autocmd({ "TextPutPost", "TextYankPost" }, {
+  desc = "Highlight yank",
   group = group,
   callback = function()
     vim.hl.hl_op({ higroup = "IncSearch" })
@@ -96,6 +117,7 @@ autocmd("UIEnter", {
       require("main.keymap")
       require("main.statusline")
       require("main.lsp")
+      require("vim._core.ui2").enable({})
 
       local packadd = vim.cmd.packadd
       packadd("nohlsearch")
