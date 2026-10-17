@@ -1,6 +1,6 @@
 return {
   "mcauley-penney/visual-whitespace.nvim",
-  event = "BufReadPre",
+  event = "ModeChanged *:[vV\x16]*",
 
   opts = {
     nbsp = "+",
