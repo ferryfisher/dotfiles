@@ -412,7 +412,7 @@ do
     callback = function(args)
       local buf = args.buf
 
-      stop_git(buffers[buf])
+      stop_git(buffers[buf] or {})
       redraw_pending[buf] = nil
       buffers[buf] = nil
     end,
