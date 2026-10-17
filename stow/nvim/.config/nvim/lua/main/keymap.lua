@@ -2,9 +2,9 @@ local api = vim.api
 local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 local diagnostic = vim.diagnostic
+local keymap = vim.keymap.set
 local lsp = vim.lsp
 local buf = lsp.buf
-local keymap = vim.keymap.set
 
 local nmap
 do

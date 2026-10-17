@@ -1,14 +1,14 @@
 local o = vim.o
--- Editing {{{{
 
--- Buffers {{{
-o.hidden = true
+-- Buffers
 o.splitright = true
 o.splitbelow = true
--- }}}
 
--- Defaults {{{
-o.clipboard = "unnamed,unnamedplus"
+-- Defaults
+vim.schedule(function()
+  o.clipboard = "unnamed,unnamedplus"
+end)
+o.fileformats = "unix,dos"
 o.omnifunc = "syntaxcomplete#Complete"
 o.virtualedit = "block"
 o.autoread = true
@@ -16,31 +16,19 @@ o.modeline = false
 o.swapfile = false
 o.undofile = true
 o.writebackup = false
--- }}}
 
--- File format {{{
-o.encoding = "utf-8"
-o.fileencodings = "ucs-bom,utf-8,default,latin1"
-o.fileformats = "unix,dos"
-o.foldmethod = "marker"
--- }}}
-
--- Frequency {{{
+-- Frequency
 o.updatetime = 1000
 o.timeoutlen = 250
 o.ttimeoutlen = 5
--- }}}
 
--- Indent {{{
+-- Indent
 o.softtabstop = -1
 o.shiftwidth = 2
-o.autoindent = true
 o.expandtab = true
-o.smarttab = true
 o.shiftround = true
--- }}}
 
--- Interface {{{
+-- Interface
 o.completeitemalign = "kind,abbr,menu"
 o.completeopt = "menu,menuone,noinsert,nosort,fuzzy,popup"
 o.wildmode = "noselect:full"
@@ -62,30 +50,23 @@ o.signcolumn = "yes"
 o.winborder = "bold"
 o.textwidth = 80
 o.cursorline = true
-o.lazyredraw = true
 o.linebreak = true
 o.number = true
 o.smoothscroll = true
 o.wrap = false
--- }}}
 
--- List {{{
+-- List
 o.listchars = "extends:→,nbsp:+,precedes:←,tab:» ,trail:·"
 o.fillchars = "eob: ,fold: "
 o.foldtext = ""
 o.foldlevelstart = 255
 o.list = true
--- }}}
 
--- Search {{{
+-- Search
 o.hlsearch = true
 o.smartcase = true
 o.ignorecase = true
-o.incsearch = true
 o.wildignorecase = true
--- }}}
-
--- }}}}
 
 -- Turn off blinking cursor in terminal mode
 vim.api.nvim_set_option_value("guicursor", "a:blinkon0", {
