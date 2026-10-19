@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
-  environment = {
-    systemPackages = [ pkgs.nh ];
-    variables.NH_FLAKE = config.networking.hostName;
+  programs.nh = {
+    enable = true;
+    flake = config.networking.hostName;
+
+    clean = {
+      enable = true;
+      extraArgs = "--keep 5 --optimise";
+    };
   };
 }
