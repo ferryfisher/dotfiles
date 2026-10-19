@@ -13,9 +13,9 @@
     "type": "github",
     "owner": "nix-darwin",
     "repo": "nix-darwin",
-    "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
-    "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
-    "lastModified": 1786845137
+    "rev": "f0ec2b3fae4df92ea7788359aef9e07bb88d720f",
+    "narHash": "sha256-jto4pdsl0bgErQ5vaMc3gOyj//PILLRJuqX3I7fUk6s=",
+    "lastModified": 1792366139
   },
   "homebrew": {
     "type": "github",
@@ -47,9 +47,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "9b7ec59580fddf671f7bf922f66ef114a59a51ee",
-    "narHash": "sha256-kk6r2Fc9/j5idU8UTzGLJRSR9jEbsWhB0EvK7J7qqRA=",
-    "lastModified": 1792193591
+    "rev": "0851e7dabed9fc9c019e22088029f36e9f3ec3e3",
+    "narHash": "sha256-6LIFE2ghwUFqP4+eiEttWw2Iyam9QLZe6PE2+UNCNVc=",
+    "lastModified": 1792251242
   },
   "nix-homebrew": {
     "type": "github",
