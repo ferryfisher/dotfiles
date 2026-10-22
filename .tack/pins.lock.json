@@ -13,43 +13,43 @@
     "type": "github",
     "owner": "nix-darwin",
     "repo": "nix-darwin",
-    "rev": "f0ec2b3fae4df92ea7788359aef9e07bb88d720f",
-    "narHash": "sha256-jto4pdsl0bgErQ5vaMc3gOyj//PILLRJuqX3I7fUk6s=",
-    "lastModified": 1792366139
+    "rev": "57abbd54db8e267474f9154d80bad195462fa081",
+    "narHash": "sha256-Qw1+LMJtF10B8FVqZdIlAEfNyGmhxzfgnvm1UD9+zY8=",
+    "lastModified": 1792624390
   },
   "homebrew": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "brew",
-    "rev": "cdc1ca503231b9a96da64526774915d913c3ec9f",
-    "narHash": "sha256-+7waf1/I5YZPPZOwGDGqhrw9k3lDdXhdk4nglsQcqyA=",
-    "lastModified": 1791455121,
-    "tag": "7.0.9",
-    "version": "7.0.9"
+    "rev": "8f10429b56be28a25032b87463fffc95e556b5bc",
+    "narHash": "sha256-7NCtaaeR/OPjJ5BQAHeJN0vhMmVB/tFSinCX5YDXjYA=",
+    "lastModified": 1792393606,
+    "tag": "7.0.10",
+    "version": "7.0.10"
   },
   "homebrew-cask": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-cask",
-    "rev": "32d19e7e396f23b46bafeaf83cf9241d4b9fde6e",
-    "narHash": "sha256-PUVyWc9AetcrnlClVIOduI6PqbiYAByYcUYpA5MY294=",
-    "lastModified": 1791650124
+    "rev": "2ae5e62da168ca730cf012cfd1e4fc5aa3b59ab4",
+    "narHash": "sha256-IQQvHGxS+r6HiyM3izDCB9pYHs3fhNM5Zkif5Gf3VbU=",
+    "lastModified": 1792628063
   },
   "homebrew-core": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-core",
-    "rev": "62a333a9097c16fdc6ec6a2f8395f4b7cb5dd63e",
-    "narHash": "sha256-mtJhrEBdrms9xHK2ml6glY6wObbAhEqSdL2Lq7bFy+g=",
-    "lastModified": 1791652584
+    "rev": "17e93e5ab6a223031d2633163dea4c1bd99a770d",
+    "narHash": "sha256-4QVGV++znrujlASLI+bJVcqi7mObAlGfJ1vphCMSt3Y=",
+    "lastModified": 1792630378
   },
   "neovim": {
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "17f43325b1f549d127bb58ed3fcd528d15f98595",
-    "narHash": "sha256-PR/2nvDoiLl56XsugHeNGimW/NOLXG9W6LtHegh54h4=",
-    "lastModified": 1792462324
+    "rev": "1944cb3201a5e729dbc4b0d614dfd355fd01620f",
+    "narHash": "sha256-rsH9YjNpTDqSbnldGoBbp9chEqpnLHW8oGnWkM35+34=",
+    "lastModified": 1792531061
   },
   "nix-homebrew": {
     "type": "github",
@@ -61,17 +61,17 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1095514.7a6522c86871/nixexprs.tar.zst?rev=7a6522c868711d06e3a520bbcdfafe9806f4337f&lastModified=1792208399",
-    "rev": "7a6522c868711d06e3a520bbcdfafe9806f4337f",
-    "narHash": "sha256-oetumMsfOP6I88jJ3o4C/LqZBcCNLMx9a5WIP9oUin8=",
-    "lastModified": 1792208399
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1097770.5adc50831c25/nixexprs.tar.zst?rev=5adc50831c259f87faeb09ddf930d43597197473&lastModified=1792506237",
+    "rev": "5adc50831c259f87faeb09ddf930d43597197473",
+    "narHash": "sha256-hVMDyAXU0kxRuG3GygbZkzf5x+aBNEC0NYEJ6KwHtD4=",
+    "lastModified": 1792506237
   },
   "tack": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "8573f1f1bda4aa467fa341b33f6004661833c022",
-    "narHash": "sha256-wwkmmsr5u8MknxrF9ZdIN90wk09weXCaVQp8aeWdYaE=",
-    "lastModified": 1792416927
+    "rev": "f7cce4f7e53c9482661b158824522fefef2d7920",
+    "narHash": "sha256-vOIIx/QU6xEjMZTMZM8GNNXS/p4Idvw8V09KT5zNwTI=",
+    "lastModified": 1792630541
   }
 }
