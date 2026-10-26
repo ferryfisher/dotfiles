@@ -47,9 +47,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "659164699f8d884a90b23829c0a0c5cc1ab38873",
-    "narHash": "sha256-ApVWXFa2h0PJXnUnL27bS4dwm0pE9/KH8QIUWu8R3WU=",
-    "lastModified": 1792888889
+    "rev": "187d13aa6047e1914244e8033b2d2f3379a0b97f",
+    "narHash": "sha256-FqbtqOeT2QGwJvXvU4YSP053bkOBkd2bhAocUwhGZCE=",
+    "lastModified": 1792975083
   },
   "nix-homebrew": {
     "type": "github",
