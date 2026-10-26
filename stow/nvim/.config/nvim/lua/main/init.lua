@@ -50,7 +50,7 @@ do
       local lang = ts.language.get_lang(vim.bo[buf].filetype)
         or error(
           string.format(
-            "Could not determine parser for buffer %d (filetype: %q)",
+            "unable to determine parser for buffer %d (filetype: %q)",
             buf,
             vim.bo[buf].filetype
           )
