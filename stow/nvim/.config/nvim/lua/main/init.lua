@@ -45,12 +45,16 @@ do
     pattern = filetypes,
     group = group,
     callback = function(opts)
+      local buf = opts.buf
       local ts = vim.treesitter
-      local lang = ts.language.get_lang(vim.bo[opts.buf].filetype)
-
-      if not lang then
-        return
-      end
+      local lang = ts.language.get_lang(vim.bo[buf].filetype)
+        or error(
+          string.format(
+            "Could not determine parser for buffer %d (filetype: %q)",
+            buf,
+            vim.bo[buf].filetype
+          )
+        )
 
       local nvim_ts = require("nvim-treesitter")
 
@@ -66,10 +70,10 @@ do
       vim.bo.indentexpr = nvim_ts.indentexpr
 
       if vim.list_contains(nvim_ts.get_installed("parsers"), lang) then
-        ts.start(opts.buf, lang)
+        ts.start(buf, lang)
       else
         nvim_ts.install(lang):await(function()
-          ts.start(opts.buf, lang)
+          ts.start(buf, lang)
         end)
       end
     end,
