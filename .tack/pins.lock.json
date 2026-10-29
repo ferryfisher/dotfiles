@@ -47,9 +47,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "187d13aa6047e1914244e8033b2d2f3379a0b97f",
-    "narHash": "sha256-FqbtqOeT2QGwJvXvU4YSP053bkOBkd2bhAocUwhGZCE=",
-    "lastModified": 1792975083
+    "rev": "9290926ccf55ba3f55e4b48f5b94cad403017688",
+    "narHash": "sha256-vgRROxVGAMhK9T2sIlZPNCCAo5pta/d/JDhhp6yo4vo=",
+    "lastModified": 1793237496
   },
   "nix-homebrew": {
     "type": "github",
@@ -61,17 +61,17 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1100901.d3b13ad75cc4/nixexprs.tar.zst?rev=d3b13ad75cc492690728f9307e443dec9ef9a20e&lastModified=1792842277",
-    "rev": "d3b13ad75cc492690728f9307e443dec9ef9a20e",
-    "narHash": "sha256-lrp+A0ZwQN3V0tSZP6vVFIX/16FFOzr19mSup8XD80w=",
-    "lastModified": 1792842277
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1104102.e62746b0b472/nixexprs.tar.zst?rev=e62746b0b472753ef019baceab6f1e2e52014980&lastModified=1793225069",
+    "rev": "e62746b0b472753ef019baceab6f1e2e52014980",
+    "narHash": "sha256-GYpArmwi/iMuX2ov31oCBhAXRMJdNX9kOl2LZHCuR6M=",
+    "lastModified": 1793225069
   },
   "tack": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "f7cce4f7e53c9482661b158824522fefef2d7920",
-    "narHash": "sha256-vOIIx/QU6xEjMZTMZM8GNNXS/p4Idvw8V09KT5zNwTI=",
-    "lastModified": 1792630541
+    "rev": "c5b02fb90d4ec5f74e90710e4d2aa335b1d6c280",
+    "narHash": "sha256-jIDNBwu9nXXu7iGWiQ9QpUIeC0IzloDdYuqvzlBfqr4=",
+    "lastModified": 1793235360
   }
 }
