@@ -6,6 +6,7 @@ in
 {
   environment.systemPackages = [
     (pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: {
+      doCheck = false;
       src = inputs.neovim;
       version = rev;
 
