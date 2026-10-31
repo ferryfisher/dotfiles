@@ -22,17 +22,17 @@ url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
 url = "github:manic-systems/tack"
 
 [inputs.homebrew]
-frozen = "8f10429b56be28a25032b87463fffc95e556b5bc"
+frozen = "c6069d2a943b71b0a90d91fc1ac93cb9c1634dcc"
 group = "brew"
 tag = "{version}"
 url = "github:Homebrew/brew"
 
 [inputs.homebrew-cask]
-frozen = "8965b9900419267f03e34e01d4ec1579b8bfc0fc"
+frozen = "1dd2b69c16463a36cd869ef4ee59d7d81bd60e57"
 group = "brew"
 url = "github:Homebrew/homebrew-cask"
 
 [inputs.homebrew-core]
-frozen = "eeb5f1ea56462b6f710631185587aec163411f38"
+frozen = "d3e62a3c73976f802ac9d181ed8615a8af8dc79a"
 group = "brew"
 url = "github:Homebrew/homebrew-core"

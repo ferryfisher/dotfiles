@@ -21,27 +21,27 @@
     "type": "github",
     "owner": "Homebrew",
     "repo": "brew",
-    "rev": "8f10429b56be28a25032b87463fffc95e556b5bc",
-    "narHash": "sha256-7NCtaaeR/OPjJ5BQAHeJN0vhMmVB/tFSinCX5YDXjYA=",
-    "lastModified": 1792393606,
-    "tag": "7.0.10",
-    "version": "7.0.10"
+    "rev": "c6069d2a943b71b0a90d91fc1ac93cb9c1634dcc",
+    "narHash": "sha256-8mCor0DDjNhi+0e+FllfqiMABujBl+/RxYW+wgMpcto=",
+    "lastModified": 1793000687,
+    "tag": "7.0.11",
+    "version": "7.0.11"
   },
   "homebrew-cask": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-cask",
-    "rev": "8965b9900419267f03e34e01d4ec1579b8bfc0fc",
-    "narHash": "sha256-R0LrM8OKabxz7UZ5vIDmosBQE2d2d/K/dwj39d8WiWI=",
-    "lastModified": 1792917833
+    "rev": "1dd2b69c16463a36cd869ef4ee59d7d81bd60e57",
+    "narHash": "sha256-xioWz5Da7Xj8++CqnoamQx30Hr+40thceyilnyyWWXo=",
+    "lastModified": 1793482742
   },
   "homebrew-core": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-core",
-    "rev": "eeb5f1ea56462b6f710631185587aec163411f38",
-    "narHash": "sha256-jacUkpv/iKS424AKxOZTn9NoSJHfsBNOpD9BAI4kZuE=",
-    "lastModified": 1792918994
+    "rev": "d3e62a3c73976f802ac9d181ed8615a8af8dc79a",
+    "narHash": "sha256-BcgbpF9YFvXxBF+9juzclCJAmPWFZn17+GNK/6NUj+s=",
+    "lastModified": 1793483398
   },
   "neovim": {
     "type": "github",
