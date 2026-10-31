@@ -13,9 +13,9 @@
     "type": "github",
     "owner": "nix-darwin",
     "repo": "nix-darwin",
-    "rev": "bb0b90dbd54e207100de72b5dcbe3188c98a4b69",
-    "narHash": "sha256-P0/GhewcEQmAbzq3QunNWY2jLJaYH9F6c/5dEM/jQ4M=",
-    "lastModified": 1792737899
+    "rev": "ff0e21a414d4547183396da1b44a66f2577b65e9",
+    "narHash": "sha256-+RpTlcdh9KqZ+ZiLkNSTvibQWm935EcIdBzRPCTFsrQ=",
+    "lastModified": 1793418699
   },
   "homebrew": {
     "type": "github",
@@ -47,9 +47,9 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "9290926ccf55ba3f55e4b48f5b94cad403017688",
-    "narHash": "sha256-vgRROxVGAMhK9T2sIlZPNCCAo5pta/d/JDhhp6yo4vo=",
-    "lastModified": 1793237496
+    "rev": "30d2de4d9f8b8e0dcb9aefc25087085437a337e8",
+    "narHash": "sha256-RGlVRxm2FAJ9lBmeNED6Htbkm5D5ewM7Ls6GX7G/NkI=",
+    "lastModified": 1793409120
   },
   "nix-homebrew": {
     "type": "github",
@@ -61,17 +61,17 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1104102.e62746b0b472/nixexprs.tar.zst?rev=e62746b0b472753ef019baceab6f1e2e52014980&lastModified=1793225069",
-    "rev": "e62746b0b472753ef019baceab6f1e2e52014980",
-    "narHash": "sha256-GYpArmwi/iMuX2ov31oCBhAXRMJdNX9kOl2LZHCuR6M=",
-    "lastModified": 1793225069
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1105041.885ba4d038f1/nixexprs.tar.zst?rev=885ba4d038f10c3d17d7a92e8c3cc185b99c9158&lastModified=1793345420",
+    "rev": "885ba4d038f10c3d17d7a92e8c3cc185b99c9158",
+    "narHash": "sha256-RcsCCbI6YtyC9Be5c0XiwLMHJivUaGWSNHjJt0Q3NBE=",
+    "lastModified": 1793345420
   },
   "tack": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "c5b02fb90d4ec5f74e90710e4d2aa335b1d6c280",
-    "narHash": "sha256-jIDNBwu9nXXu7iGWiQ9QpUIeC0IzloDdYuqvzlBfqr4=",
-    "lastModified": 1793235360
+    "rev": "e23a2e52e369636d3f753c1e6a1929a9c2f23cf6",
+    "narHash": "sha256-GmTLGnYVdPmmh/DRfL3hQDChNnJoYw31F0zmmbG2sjc=",
+    "lastModified": 1793433204
   }
 }
