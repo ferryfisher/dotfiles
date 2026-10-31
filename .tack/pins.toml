@@ -1,6 +1,9 @@
 [all_follow]
 nixpkgs = "nixpkgs"
 
+[groups.brew]
+type = "fetch"
+
 [inputs.darwin]
 url = "github:nix-darwin/nix-darwin"
 
@@ -19,20 +22,17 @@ url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
 url = "github:manic-systems/tack"
 
 [inputs.homebrew]
-frozen = true
+frozen = "8f10429b56be28a25032b87463fffc95e556b5bc"
 group = "brew"
 tag = "{version}"
-type = "fetch"
 url = "github:Homebrew/brew"
 
 [inputs.homebrew-cask]
-frozen = true
+frozen = "8965b9900419267f03e34e01d4ec1579b8bfc0fc"
 group = "brew"
-type = "fetch"
 url = "github:Homebrew/homebrew-cask"
 
 [inputs.homebrew-core]
-frozen = true
+frozen = "eeb5f1ea56462b6f710631185587aec163411f38"
 group = "brew"
-type = "fetch"
 url = "github:Homebrew/homebrew-core"
