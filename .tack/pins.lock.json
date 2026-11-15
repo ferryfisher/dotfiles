@@ -47,9 +47,13 @@
     "type": "github",
     "owner": "neovim",
     "repo": "neovim",
-    "rev": "b4d549f439e833f4e4b58770ac03caa641a71efe",
-    "narHash": "sha256-MTIVJMejZDk9yw1ROzRPi0X0/eBlPidigLqaUzxWcvQ=",
-    "lastModified": 1793725205
+    "rev": "e77714b475f51a4d7f22926198fac0b3cde32bc5",
+    "narHash": "sha256-QwkgrI8QwnOBg4HhfIudN1J3t+yGTmZFnfGR2mRY4Wk=",
+    "lastModified": 1794701718,
+    "archive": {
+      "hash": "sha256-vyuPqTe5K8IGSA7Oqd+6s1dERkSqVHX9aJDEKzZF80E=",
+      "outHash": "sha256-fjUmqTO6aFEYeTvJj8eX8ztHsfJQ86MmmYY3lPglQGM="
+    }
   },
   "nix-homebrew": {
     "type": "github",
@@ -61,17 +65,17 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1107593.ea9e3ef341e1/nixexprs.tar.zst?rev=ea9e3ef341e11c193537f674f821a99f9f436729&lastModified=1793706278",
-    "rev": "ea9e3ef341e11c193537f674f821a99f9f436729",
-    "narHash": "sha256-iCbwhLa+h23/rxGQD9YJJ+BrMYHCPKB6au/BsobNWB4=",
-    "lastModified": 1793706278
+    "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1119636.e126e9e73c33/nixexprs.tar.zst?lastModified=1794554816&rev=e126e9e73c335158ff8279ac14d5f4afec153716",
+    "rev": "e126e9e73c335158ff8279ac14d5f4afec153716",
+    "narHash": "sha256-E5zhHNI4GPnhvJFu8cxkO5wt0NK23Hu66QQXrD4XX8Q=",
+    "lastModified": 1794554816
   },
   "tack": {
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "4ec7cc54362fdc2aa062ccb38b5b826b31921261",
-    "narHash": "sha256-WFAX4R64cjol4+w1KPTTnq58qm5G/QXCInxLY1pIVIk=",
-    "lastModified": 1793758878
+    "rev": "4bb81b579e2072b02f8a7a56e9da317e6faf5407",
+    "narHash": "sha256-PSwYLv40mPN9//mGLA+5Q3YUPfS16dMTrd4BARJhCuo=",
+    "lastModified": 1794730228
   }
 }
