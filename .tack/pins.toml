@@ -5,16 +5,16 @@ nixpkgs = "nixpkgs"
 type = "fetch"
 
 [inputs.brew.homebrew]
-frozen = "c6069d2a943b71b0a90d91fc1ac93cb9c1634dcc"
+frozen = "bc63375ac3a4d6debb1ceb441ae6e22854f0909a"
 tag = "{version}"
 url = "github:Homebrew/brew"
 
 [inputs.brew.homebrew-cask]
-frozen = "1dd2b69c16463a36cd869ef4ee59d7d81bd60e57"
+frozen = "50167605250fcf47439011d7a5dbcae7c715bc69"
 url = "github:Homebrew/homebrew-cask"
 
 [inputs.brew.homebrew-core]
-frozen = "d3e62a3c73976f802ac9d181ed8615a8af8dc79a"
+frozen = "89ce28e135763378a74c2bd01f4761468e6f813b"
 url = "github:Homebrew/homebrew-core"
 
 [inputs.darwin]
