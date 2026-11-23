@@ -21,39 +21,42 @@
     "type": "github",
     "owner": "Homebrew",
     "repo": "brew",
-    "rev": "bc63375ac3a4d6debb1ceb441ae6e22854f0909a",
-    "narHash": "sha256-8G9+iCYTK2F5vSJplKPcq6dUSM6ioFtopg8nMTKS3p4=",
-    "lastModified": 1794177785,
+    "rev": "3e47189a707c739ee1278a28a3b845f5834574e6",
+    "narHash": "sha256-8qp8StbMuOtXNqnfLa2ABjB+pIdHJBax5LJCs2eMhKQ=",
+    "lastModified": 1795051546,
     "archive": {
-      "hash": "sha256-wd+8cHT0ocl5nPXCKN9N7w0t4mRfvh40AoEOBBD+Fhw=",
-      "outHash": "sha256-KK1kPTzvr9YXmgQCeQgVOZeWCowMjoegtXB4qFDjAJc="
+      "hash": "sha256-XoGf3vHRm4833Us3QV0WQ/Tx4qAjI0zFT35fMMG1uDw=",
+      "outHash": "sha256-lnC5woSA/iDkpoXtl4BlocDoJraWK7/T/TnUF//yOEY="
     },
-    "tag": "7.0.13",
-    "version": "7.0.13"
+    "public": true,
+    "tag": "7.0.15",
+    "version": "7.0.15"
   },
   "homebrew-cask": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-cask",
-    "rev": "50167605250fcf47439011d7a5dbcae7c715bc69",
-    "narHash": "sha256-XHD5BXX6FX0mWRmY805oiZOR23KfnD1Y2J01uCXRLNo=",
-    "lastModified": 1794744720,
+    "rev": "ea7ef4c66f210bacd5b0c37a1eb4dcbd665d8366",
+    "narHash": "sha256-dDz5n4CitfVCvhkbCe2LDR3cwr+aJCQQWlnZD8fQBOQ=",
+    "lastModified": 1795429400,
     "archive": {
-      "hash": "sha256-gdz0h4qN/COjSnqQTrS1iVqOSnTvXgocJtmTzHlgblI=",
-      "outHash": "sha256-cEKS+ynzBshsnXo0AtSp8hvIAyaPN7bcdQeYklQtZvc="
-    }
+      "hash": "sha256-vP7uL4Gx51qeX9vXktReUIshf8V8mPEmA8ssLWp5uPE=",
+      "outHash": "sha256-39kSIGQPQcvX6OsKTKC59iqScp+tLM6TCrHaeBzQ5SY="
+    },
+    "public": true
   },
   "homebrew-core": {
     "type": "github",
     "owner": "Homebrew",
     "repo": "homebrew-core",
-    "rev": "89ce28e135763378a74c2bd01f4761468e6f813b",
-    "narHash": "sha256-8doKCfR49o9fT24Ph4oe/Yboy0qncyQXDNpOdawN97I=",
-    "lastModified": 1794744498,
+    "rev": "e98970b43567ba366e57e8147201844fc5f7920b",
+    "narHash": "sha256-BR7NyAXFOabM+W+aQqISH+BsiF/eYoHUgkqCRs7FVbk=",
+    "lastModified": 1795428936,
     "archive": {
-      "hash": "sha256-9xIiw/B0SRN3ofQVCcG86KgxeGKhrqQ4OQ9KagDoqrI=",
-      "outHash": "sha256-XUx8igh+zMRCHc8ippOCZ0bW0No1u0FP/zYklHyAwyQ="
-    }
+      "hash": "sha256-xrSAdJUwvnbL8Dkx+rRCPdb7Z8ezmzXN1VUm+K7Gx9o=",
+      "outHash": "sha256-Ac20XRah6YmIJn6+BnODz4ETbpDJIK84kCesehoXRhs="
+    },
+    "public": true
   },
   "neovim": {
     "type": "github",
