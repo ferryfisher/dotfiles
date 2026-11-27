@@ -1,16 +1,10 @@
-<div align="center">
-
 # dotfiles
 
-</div>
+System-level Nix configuration.
 
 ## Installation
 
-> [!note]
->
-> Clone this repository to `~/dotfiles`.
->
-> Run `stow` for each config in [stow](stow/) or `stow *` for every config.
+Run `stow` for each config in [stow](stow/) or `stow *` for every config.
 
 ## Formatting
 
